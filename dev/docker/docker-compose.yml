@@ -1,0 +1,12 @@
+version: '2'
+services:
+  neows-php:
+    build:
+        context : ../..
+        dockerfile: dev/docker/php/Dockerfile
+        args:
+          - host_ip
+    volumes:
+      - ../../:/NeoWsClient
+    ports:
+       - "2230:22"
