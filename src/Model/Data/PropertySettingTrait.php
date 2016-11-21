@@ -25,32 +25,6 @@ trait PropertySettingTrait
     private static $collectionType ='Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface';
 
     /**
-     * Set property data
-     *
-     * @param array $data
-     *
-     * @throws InvalidArgumentException
-     */
-    private function setPropertyData(array $data)
-    {
-        // validate
-        $errorList = array_filter(array_keys($data), function($item) {
-            return !property_exists($this, $item);
-        });
-
-        if (!empty($errorList)) {
-            throw new InvalidArgumentException(
-                sprintf('Can not build data object. Properties [%s] are not exist in "%s".', implode(',', $errorList), __CLASS__)
-            );
-        }
-
-        // sets
-        foreach ($data as $key => $value) {
-            $this->$key = $value;
-        }
-    }
-
-    /**
      * Set simple property: string, int, float, bool, array
      *
      *

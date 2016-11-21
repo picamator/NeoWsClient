@@ -108,7 +108,25 @@ class Orbit implements OrbitInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyData($data);
+        $this->setPropertySimple('orbitId', $data, 'int');
+        $this->setPropertyComplex('orbitDeterminationDate', $data, 'DataTime');
+        $this->setPropertySimple('orbitUncertainty', $data, 'int');
+        $this->setPropertySimple('minimumOrbitIntersection', $data, 'int');
+        $this->setPropertySimple('minimumOrbitIntersection', $data, 'float');
+        $this->setPropertySimple('jupiterTisserandInvariant', $data, 'float');
+        $this->setPropertySimple('epochOsculation', $data, 'float');
+        $this->setPropertySimple('eccentricity', $data, 'float');
+        $this->setPropertySimple('semiMajorAxis', $data, 'float');
+        $this->setPropertySimple('inclination', $data, 'float');
+        $this->setPropertySimple('ascendingNodeLongitude', $data, 'float');
+        $this->setPropertySimple('orbitalPeriod', $data, 'float');
+        $this->setPropertySimple('perihelionDistance', $data, 'float');
+        $this->setPropertySimple('perihelionArgument', $data, 'float');
+        $this->setPropertySimple('aphelionDistance', $data, 'float');
+        $this->setPropertySimple('perihelionTime', $data, 'float');
+        $this->setPropertySimple('meanAnomaly', $data, 'float');
+        $this->setPropertySimple('meanMotion', $data, 'float');
+        $this->setPropertySimple('equinox', $data, 'string');
     }
 
     /**

@@ -38,7 +38,10 @@ class Distance implements DistanceInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyData($data);
+        $this->setPropertySimple('astronomical', $data, 'float');
+        $this->setPropertySimple('lunar', $data, 'float');
+        $this->setPropertySimple('kilometers', $data, 'float');
+        $this->setPropertySimple('miles', $data, 'float');
     }
 
     /**
@@ -54,7 +57,7 @@ class Distance implements DistanceInterface
      */
     public function getLunar()
     {
-        return $this->getLunar();
+        return $this->lunar;
     }
 
     /**

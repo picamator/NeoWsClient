@@ -33,7 +33,9 @@ class Velocity implements VelocityInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyData($data);
+        $this->setPropertySimple('kilometersPerSecond', $data, 'float');
+        $this->setPropertySimple('kilometersPerHour', $data, 'float');
+        $this->setPropertySimple('milesPerHour', $data, 'float');
     }
 
     /**

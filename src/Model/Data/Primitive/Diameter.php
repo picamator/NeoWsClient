@@ -28,7 +28,8 @@ class Diameter implements DiameterInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyData($data);
+        $this->setPropertySimple('estimatedDiameterMin', $data, 'float');
+        $this->setPropertySimple('estimatedDiameterMax', $data, 'float');
     }
 
     /**

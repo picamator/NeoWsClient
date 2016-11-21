@@ -23,7 +23,7 @@ class Link implements LinkInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyData($data);
+        $this->setPropertySimple('self', $data, 'string');
     }
 
     /**

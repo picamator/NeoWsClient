@@ -9,29 +9,6 @@ use Picamator\NeoWsClient\Tests\Unit\BaseTest;
 
 class PropertySettingTraitTest extends BaseTest
 {
-    public function testValidSetPropertyData()
-    {
-        $data = [
-            'estimatedDiameterMin' => 12,
-            'estimatedDiameterMax' => 10
-        ];
-        $diameter = new Diameter($data);
-
-        $this->assertEquals($data['estimatedDiameterMin'], $diameter->getEstimatedDiameterMin());
-        $this->assertEquals($data['estimatedDiameterMax'], $diameter->getEstimatedDiameterMax());
-    }
-
-    /**
-     * @expectedException \Picamator\NeoWsClient\Exception\InvalidArgumentException
-     */
-    public function testInvalidSetPropertyData()
-    {
-        new Diameter([
-            'test1' => 12,
-            'test2' => 10
-        ]);
-    }
-
     public function testSetValidSetProperty()
     {
         $linkMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Primitive\LinkInterface')
