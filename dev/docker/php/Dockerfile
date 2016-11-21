@@ -55,6 +55,9 @@ RUN docker-php-ext-install -j$(nproc) curl
 RUN apt-get install -y zlib1g-dev
 RUN docker-php-ext-install -j$(nproc) zip
 
+# php.ini
+ADD  ./dev/docker/php/config/php.ini /usr/local/etc/php/
+
 # volume
 RUN mkdir /NeoWsClient
 VOLUME /NeoWsClient

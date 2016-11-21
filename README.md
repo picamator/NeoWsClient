@@ -1,9 +1,10 @@
 NeoWsClient
 ===========
 
-NeoWsClient - client for [NASA Open Api](https://api.nasa.gov/) "[Near Earth Object Web Service](https://api.nasa.gov/neo/?api_key=DEMO_KEY)" or "NeoWs" in short.
+NeoWsClient - client for NASA Open Api "[Near Earth Object Web Service](https://api.nasa.gov/neo/?api_key=DEMO_KEY)" or "NeoWs" in short.
+All NeoWs data is from the [NASA JPL Asteroid team](http://neo.jpl.nasa.gov/).
 
-NeoWsClient supports NeoWs v1 with those resources:
+NeoWsClient supports NeoWs v1 with resources:
 
 * feed
 * neo
