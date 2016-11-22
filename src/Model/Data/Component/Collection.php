@@ -40,8 +40,6 @@ class Collection implements CollectionInterface
     {
         $this->setPropertySimple('type', $data, 'string');
         $this->setPropertySimple('data', $data, 'array');
-
-        $this->iterator = new \ArrayIterator($data);
     }
 
     /**
@@ -65,6 +63,10 @@ class Collection implements CollectionInterface
      */
     public function getIterator()
     {
+        if (is_null($this->iterator)) {
+            $this->iterator = new \ArrayIterator($this->data);
+        }
+
         return $this->iterator;
     }
 
@@ -78,5 +80,21 @@ class Collection implements CollectionInterface
         }
 
         return $this->count;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function serialize()
+    {
+        return serialize([$this->type, $this->data]);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function unserialize($serialized)
+    {
+        list($this->type, $this->data) = unserialize($serialized);
     }
 }

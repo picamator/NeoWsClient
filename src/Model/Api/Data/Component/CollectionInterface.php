@@ -4,7 +4,7 @@ namespace Picamator\NeoWsClient\Model\Api\Data\Component;
 /**
  * Collection
  */
-interface CollectionInterface extends \IteratorAggregate, \Countable
+interface CollectionInterface extends \IteratorAggregate, \Countable, \Serializable
 {
     /**
      * Get data
