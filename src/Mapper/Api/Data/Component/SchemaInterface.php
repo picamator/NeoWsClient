@@ -1,5 +1,6 @@
 <?php
 namespace Picamator\NeoWsClient\Mapper\Api\Data\Component;
+
 use Picamator\NeoWsClient\Mapper\Api\FilterInterface;
 
 /**

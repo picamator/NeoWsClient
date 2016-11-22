@@ -60,7 +60,7 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
     {
         $collectionData = [];
         foreach ($data as $item) {
-            $collectionData[] = $this->createSchema($item);
+            $collectionData[] = $this->createSchemaRecursive($item);
         }
 
         return $this->objectManager->create($this->className, ['data' => $collectionData, 'type' => self::$collectionType]);
@@ -73,7 +73,7 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
      *
      * @return SchemaInterface
      */
-    private function createSchema(array $data)
+    private function createSchemaRecursive(array $data)
     {
         // filter
         $filter = null;
@@ -85,7 +85,7 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
         // schema
         $schema = null;
         if(!empty($data['schema'])) {
-            $schema = $this->createSchema($data['schema']);
+            $schema = $this->createSchemaRecursive($data['schema']);
             unset($data['schema']);
         }
 
