@@ -3,6 +3,7 @@ namespace Picamator\NeoWsClient\Mapper\Builder;
 
 use Picamator\NeoWsClient\Mapper\Api\Builder\SchemaCollectionFactoryInterface;
 use Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface;
+use Picamator\NeoWsClient\Mapper\Api\FilterInterface;
 use Picamator\NeoWsClient\Model\Api\ObjectManagerInterface;
 
 /**
@@ -29,6 +30,13 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
      * @var string
      */
     private $schemaName;
+
+    /**
+     * Shared filter container
+     *
+     * @var array
+     */
+    private $filterContainer = [];
 
     /**
      * @param ObjectManagerInterface $objectManager
@@ -67,12 +75,37 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
      */
     private function createSchema(array $data)
     {
+        // filter
+        $filter = null;
+        if(!empty($data['filter'])) {
+            $filter = $this->createFilter($data['filter']);
+            unset($data['filter']);
+        }
+
+        // schema
         $schema = null;
         if(!empty($data['schema'])) {
             $schema = $this->createSchema($data['schema']);
             unset($data['schema']);
         }
 
-        return $this->objectManager->create($this->schemaName, [$data, $schema]);
+        return $this->objectManager->create($this->schemaName, [$data, $filter, $schema]);
+    }
+
+    /**
+     * Create filter
+     *
+     * @param string $filterName
+     *
+     * @return FilterInterface
+     */
+    private function createFilter($filterName)
+    {
+        $key = str_replace('\\', '_', $filterName);
+        if (!array_key_exists($key, $this->filterContainer)) {
+            $this->filterContainer[$key] = $this->objectManager->create($filterName);
+        }
+
+        return $this->filterContainer[$key];
     }
 }

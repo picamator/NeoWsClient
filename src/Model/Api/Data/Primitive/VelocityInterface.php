@@ -9,21 +9,21 @@ interface VelocityInterface
     /**
      * Get kilometers per second
      *
-     * @return float
+     * @return string
      */
     public function getKilometersPerSecond();
 
     /**
      * Get kilometers per hour
      *
-     * @return float
+     * @return string
      */
     public function getKilometersPerHour();
 
     /**
      * Get miles per hour
      *
-     * @return float
+     * @return string
      */
     public function getMilesPerHour();
 }

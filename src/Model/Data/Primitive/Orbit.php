@@ -14,7 +14,7 @@ class Orbit implements OrbitInterface
     use PropertySettingTrait;
 
     /**
-     * @var int
+     * @var string
      */
     private $orbitId;
 
@@ -24,77 +24,77 @@ class Orbit implements OrbitInterface
     private $orbitDeterminationDate;
 
     /**
-     * @var int
+     * @var string
      */
     private $orbitUncertainty;
 
     /**
-     * @var float
+     * @var string
      */
     private $minimumOrbitIntersection;
 
     /**
-     * @var float
+     * @var string
      */
     private $jupiterTisserandInvariant;
 
     /**
-     * @var float
+     * @var string
      */
     private $epochOsculation;
 
     /**
-     * @var float
+     * @var string
      */
     private $eccentricity;
 
     /**
-     * @var float
+     * @var string
      */
     private $semiMajorAxis;
 
     /**
-     * @var float
+     * @var string
      */
     private $inclination;
 
     /**
-     * @var float
+     * @var string
      */
     private $ascendingNodeLongitude;
 
     /**
-     * @var float
+     * @var string
      */
     private $orbitalPeriod;
 
     /**
-     * @var float
+     * @var string
      */
     private $perihelionDistance;
 
     /**
-     * @var float
+     * @var string
      */
     private $perihelionArgument;
 
     /**
-     * @var float
+     * @var string
      */
     private $aphelionDistance;
 
     /**
-     * @var float
+     * @var string
      */
     private $perihelionTime;
 
     /**
-     * @var float
+     * @var string
      */
     private $meanAnomaly;
 
     /**
-     * @var float
+     * @var string
      */
     private $meanMotion;
 
@@ -108,24 +108,24 @@ class Orbit implements OrbitInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertySimple('orbitId', $data, 'int');
+        $this->setPropertySimple('orbitId', $data, 'string');
         $this->setPropertyComplex('orbitDeterminationDate', $data, 'DataTime');
-        $this->setPropertySimple('orbitUncertainty', $data, 'int');
-        $this->setPropertySimple('minimumOrbitIntersection', $data, 'int');
-        $this->setPropertySimple('minimumOrbitIntersection', $data, 'float');
-        $this->setPropertySimple('jupiterTisserandInvariant', $data, 'float');
-        $this->setPropertySimple('epochOsculation', $data, 'float');
-        $this->setPropertySimple('eccentricity', $data, 'float');
-        $this->setPropertySimple('semiMajorAxis', $data, 'float');
-        $this->setPropertySimple('inclination', $data, 'float');
-        $this->setPropertySimple('ascendingNodeLongitude', $data, 'float');
-        $this->setPropertySimple('orbitalPeriod', $data, 'float');
-        $this->setPropertySimple('perihelionDistance', $data, 'float');
-        $this->setPropertySimple('perihelionArgument', $data, 'float');
-        $this->setPropertySimple('aphelionDistance', $data, 'float');
-        $this->setPropertySimple('perihelionTime', $data, 'float');
-        $this->setPropertySimple('meanAnomaly', $data, 'float');
-        $this->setPropertySimple('meanMotion', $data, 'float');
+        $this->setPropertySimple('orbitUncertainty', $data, 'string');
+        $this->setPropertySimple('minimumOrbitIntersection', $data, 'string');
+        $this->setPropertySimple('minimumOrbitIntersection', $data, 'string');
+        $this->setPropertySimple('jupiterTisserandInvariant', $data, 'string');
+        $this->setPropertySimple('epochOsculation', $data, 'string');
+        $this->setPropertySimple('eccentricity', $data, 'string');
+        $this->setPropertySimple('semiMajorAxis', $data, 'string');
+        $this->setPropertySimple('inclination', $data, 'string');
+        $this->setPropertySimple('ascendingNodeLongitude', $data, 'string');
+        $this->setPropertySimple('orbitalPeriod', $data, 'string');
+        $this->setPropertySimple('perihelionDistance', $data, 'string');
+        $this->setPropertySimple('perihelionArgument', $data, 'string');
+        $this->setPropertySimple('aphelionDistance', $data, 'string');
+        $this->setPropertySimple('perihelionTime', $data, 'string');
+        $this->setPropertySimple('meanAnomaly', $data, 'string');
+        $this->setPropertySimple('meanMotion', $data, 'string');
         $this->setPropertySimple('equinox', $data, 'string');
     }
 

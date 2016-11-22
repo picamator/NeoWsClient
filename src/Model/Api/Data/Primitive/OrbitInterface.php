@@ -9,7 +9,7 @@ interface OrbitInterface
     /**
      * Get orbit id
      *
-     * @return int
+     * @return string
      */
     public function getOrbitId();
 
@@ -23,105 +23,105 @@ interface OrbitInterface
     /**
      * Get orbit uncertainty
      *
-     * @return int
+     * @return string
      */
     public function getOrbitUncertainty();
 
     /**
      * Get minimum orbit intersection
      *
-     * @return float
+     * @return string
      */
     public function getMinimumOrbitIntersection();
 
     /**
      * Get Jupiter Tisserand's invariant
      *
-     * @return  float
+     * @return  string
      */
     public function getJupiterTisserandInvariant();
 
     /**
      * Get epoch osculation
      *
-     * @return float
+     * @return string
      */
     public function getEpochOsculation();
 
     /**
      * Get eccentricity
      *
-     * @return float
+     * @return string
      */
     public function getEccentricity();
 
     /**
      * Get semi major Axis
      *
-     * @return float
+     * @return string
      */
     public function getSemiMajorAxis();
 
     /**
      * Get inclination
      *
-     * @return float
+     * @return string
      */
     public function getInclination();
 
     /**
      * Get ascending node longitude
      *
-     * @return float
+     * @return string
      */
     public function getAscendingNodeLongitude();
 
     /**
      * Get orbital period
      *
-     * @return float
+     * @return string
      */
     public function getOrbitalPeriod();
 
     /**
      * Get perihelion distance
      *
-     * @return float
+     * @return string
      */
     public function getPerihelionDistance();
 
     /**
      * Get perihelion argument
      *
-     * @return float
+     * @return string
      */
     public function getPerihelionArgument();
 
     /**
      * Get aphelion distance
      *
-     * @return float
+     * @return string
      */
     public function getAphelionDistance();
 
     /**
      * Get perihelion time
      *
-     * @return float
+     * @return string
      */
     public function getPerihelionTime();
 
     /**
      * Get mean anomaly
      *
-     * @return float
+     * @return string
      */
     public function getMeanAnomaly();
 
     /**
      * Get mean motion
      *
-     * @return float
+     * @return string
      */
     public function getMeanMotion();
 

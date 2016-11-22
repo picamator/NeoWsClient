@@ -14,22 +14,22 @@ class Distance implements DistanceInterface
     use PropertySettingTrait;
 
     /**
-     * @var float
+     * @var string
      */
     private $astronomical;
 
     /**
-     * @var float
+     * @var string
      */
     private $lunar;
 
     /**
-     * @var float
+     * @var string
      */
     private $kilometers;
 
     /**
-     * @var float
+     * @var string
      */
     private $miles;
 
@@ -38,10 +38,10 @@ class Distance implements DistanceInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertySimple('astronomical', $data, 'float');
-        $this->setPropertySimple('lunar', $data, 'float');
-        $this->setPropertySimple('kilometers', $data, 'float');
-        $this->setPropertySimple('miles', $data, 'float');
+        $this->setPropertySimple('astronomical', $data, 'string');
+        $this->setPropertySimple('lunar', $data, 'string');
+        $this->setPropertySimple('kilometers', $data, 'string');
+        $this->setPropertySimple('miles', $data, 'string');
     }
 
     /**

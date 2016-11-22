@@ -14,17 +14,17 @@ class Velocity implements VelocityInterface
     use PropertySettingTrait;
 
     /**
-     * @var float
+     * @var string
      */
     private $kilometersPerSecond;
 
     /**
-     * @var float
+     * @var string
      */
     private $kilometersPerHour;
 
     /**
-     * @var float
+     * @var string
      */
     private $milesPerHour;
 
@@ -33,9 +33,9 @@ class Velocity implements VelocityInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertySimple('kilometersPerSecond', $data, 'float');
-        $this->setPropertySimple('kilometersPerHour', $data, 'float');
-        $this->setPropertySimple('milesPerHour', $data, 'float');
+        $this->setPropertySimple('kilometersPerSecond', $data, 'string');
+        $this->setPropertySimple('kilometersPerHour', $data, 'string');
+        $this->setPropertySimple('milesPerHour', $data, 'string');
     }
 
     /**

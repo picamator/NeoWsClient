@@ -16,21 +16,21 @@ interface DistanceInterface
     /**
      * Get lunar
      *
-     * @return float
+     * @return string
      */
     public function getLunar();
 
     /**
      * Get kilometers
      *
-     * @return float
+     * @return string
      */
     public function getKilometers();
 
     /**
      * Get miles
      *
-     * @return float
+     * @return string
      */
     public function getMiles();
 }

@@ -5,6 +5,7 @@ use Picamator\NeoWsClient\Model\Data\Component\Collection;
 use Picamator\NeoWsClient\Model\Data\Neo;
 use Picamator\NeoWsClient\Model\Data\NeoDate;
 use Picamator\NeoWsClient\Model\Data\Primitive\Diameter;
+use Picamator\NeoWsClient\Model\Data\Statistics;
 use Picamator\NeoWsClient\Tests\Unit\BaseTest;
 
 class PropertySettingTraitTest extends BaseTest
@@ -30,7 +31,7 @@ class PropertySettingTraitTest extends BaseTest
 
         $data = [
             'link' =>  $linkMock,
-            'neoReferenceId' => 1,
+            'neoReferenceId' => '1',
             'name' => 'test',
             'nasaJplUrl' => 'test url',
             'absoluteMagnitudeH' => 1.5,
@@ -83,35 +84,15 @@ class PropertySettingTraitTest extends BaseTest
      */
     public function testInvalidSetPropertySimpleInt()
     {
-        $linkMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Primitive\LinkInterface')
-            ->getMock();
-
-        $diameterMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Component\EstimatedDiameterInterface')
-            ->getMock();
-
-        // close approach data mock
-        $closeApproachDataMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface')
-            ->getMock();
-
-        $closeApproachDataMock->expects($this->never())
-            ->method('getType');
-
-        $orbitalDataMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Primitive\OrbitInterface')
-            ->getMock();
-
         $data = [
-            'link' =>  $linkMock,
-            'neoReferenceId' => [],
-            'name' => 'test',
+            'neoCount' =>  '1',
+            'closeApproachCount' => '1',
+            'lastUpdated' => new \DateTime(),
+            'source' => 'test source',
             'nasaJplUrl' => 'test url',
-            'absoluteMagnitudeH' => 1.5,
-            'estimatedDiameter' => $diameterMock,
-            'potentiallyHazardousAsteroid' => true,
-            'closeApproachData' => $closeApproachDataMock,
-            'orbitalData' => $orbitalDataMock,
         ];
 
-        new Neo($data);
+        new Statistics($data);
     }
 
     /**
@@ -137,7 +118,7 @@ class PropertySettingTraitTest extends BaseTest
 
         $data = [
             'link' =>  $linkMock,
-            'neoReferenceId' => 1,
+            'neoReferenceId' => '1',
             'name' => 'test',
             'nasaJplUrl' => 'test url',
             'absoluteMagnitudeH' => [],
@@ -170,7 +151,7 @@ class PropertySettingTraitTest extends BaseTest
 
         $data = [
             'link' =>  $linkMock,
-            'neoReferenceId' => 1,
+            'neoReferenceId' => '1',
             'name' => 'test',
             'nasaJplUrl' => 'test url',
             'absoluteMagnitudeH' => 1.5,
@@ -207,7 +188,7 @@ class PropertySettingTraitTest extends BaseTest
 
         $data = [
             'link' =>  $linkMock,
-            'neoReferenceId' => 1,
+            'neoReferenceId' => '1',
             'name' => 'test',
             'nasaJplUrl' => 'test url',
             'absoluteMagnitudeH' => 1.5,

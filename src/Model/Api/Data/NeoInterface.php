@@ -21,7 +21,7 @@ interface NeoInterface
     /**
      * Get Neo reference id
      *
-     * @return int
+     * @return string
      */
     public function getNeoReferenceId();
 

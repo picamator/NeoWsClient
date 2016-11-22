@@ -22,7 +22,7 @@ class Neo implements NeoInterface
     private $link;
 
     /**
-     * @var int
+     * @var string
      */
     private $neoReferenceId;
 
@@ -64,7 +64,7 @@ class Neo implements NeoInterface
     public function __construct(array $data)
     {
         $this->setPropertyComplex('link', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\LinkInterface');
-        $this->setPropertySimple('neoReferenceId', $data, 'int');
+        $this->setPropertySimple('neoReferenceId', $data, 'string');
         $this->setPropertySimple('name', $data, 'string');
         $this->setPropertySimple('nasaJplUrl', $data, 'string');
         $this->setPropertySimple('absoluteMagnitudeH', $data, 'float');

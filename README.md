@@ -30,6 +30,18 @@ Usage
 -----
 in-progress
 
+
+Cache
+-----
+in-progress
+
+Arbitrary precision math
+------------------------
+NeoWsClient formats only Date to DateTime object all others data keeps original API's.
+NeoWs uses string for long precision float like e.g. `.6304873017364636` execution `floatval` on them removes last two digits.
+Therefore NeoWsClient does not convert strings to `int` or `float`. To make any math with `string floats` please use [BCMath](http://php.net/manual/en/book.bc.php).
+BCMath takes care of arbitrary precision mathematics. 
+
 Documentation
 -------------
 * UML class diagram: [class.diagram.png](doc/uml/class.diagram.png)
