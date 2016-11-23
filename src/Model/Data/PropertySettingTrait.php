@@ -16,7 +16,8 @@ trait PropertySettingTrait
         'int' => 'is_int',
         'float' => 'is_float',
         'array' => 'is_array',
-        'bool' => 'is_bool'
+        'bool' => 'is_bool',
+        'object' => 'is_object',
     ];
 
     /**
@@ -27,14 +28,13 @@ trait PropertySettingTrait
     /**
      * Set simple property: string, int, float, bool, array
      *
-     *
      * @param string $property
      * @param array $data
      * @param string $type
      *
      * @throws InvalidArgumentException
      */
-    private function setPropertySimple($property, array $data, $type)
+    final private function setPropertySimple($property, array $data, $type)
     {
         $this->validatePropertyExist($property, $data);
 
@@ -50,8 +50,28 @@ trait PropertySettingTrait
     }
 
     /**
-     * Set complex property
+     * Set simple property default: string, int, float, bool, array, object
      *
+     * @param string $property
+     * @param array $data
+     * @param string $type
+     * @param mixed $default
+     *
+     * @throws InvalidArgumentException
+     */
+    final private function setPropertySimpleDefault($property, array $data, $type, $default)
+    {
+        if(!array_key_exists($property, $data)) {
+            $this->$property = $default;
+            return;
+        }
+
+        // simple type
+        $this->setPropertySimple($property, $data, $type);
+    }
+
+    /**
+     * Set complex property
      *
      * @param string $property
      * @param array $data
@@ -59,7 +79,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    private function setPropertyComplex($property, array $data, $type)
+    final private function setPropertyComplex($property, array $data, $type)
     {
         $this->validatePropertyExist($property, $data);
 
@@ -75,8 +95,27 @@ trait PropertySettingTrait
     }
 
     /**
-     * Set collection property
+     * Set complex property default
      *
+     * @param string $property
+     * @param array $data
+     * @param string $type
+     * @param mixed $default
+     *
+     * @throws InvalidArgumentException
+     */
+    final private function setPropertyComplexDefault($property, array $data, $type, $default)
+    {
+        if(!array_key_exists($property, $data)) {
+            $this->$property = $default;
+            return;
+        }
+
+        $this->setPropertyComplex($property, $data, $type);
+    }
+
+    /**
+     * Set collection property
      *
      * @param string $property
      * @param array $data
@@ -84,7 +123,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    private function setPropertyCollection($property, array $data, $type)
+    final private function setPropertyCollection($property, array $data, $type)
     {
         $this->validatePropertyExist($property, $data);
 
@@ -111,7 +150,7 @@ trait PropertySettingTrait
      * @param string $property
      * @param array $data
      */
-    private function validatePropertyExist($property, array $data)
+    final private function validatePropertyExist($property, array $data)
     {
         if(!array_key_exists($property, $data)) {
             throw new InvalidArgumentException(
@@ -127,7 +166,7 @@ trait PropertySettingTrait
      *
      * @return string
      */
-    private function getType($value)
+    final private function getType($value)
     {
         return is_object($value) ? get_class($value) : gettype($value);
     }

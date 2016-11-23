@@ -2,7 +2,7 @@
 namespace Picamator\NeoWsClient\Mapper;
 
 use Picamator\NeoWsClient\Exception\InvalidArgumentException;
-use Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface;
+use Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface;
 use Picamator\NeoWsClient\Mapper\Api\MapperInterface;
 use Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface;
 use Picamator\NeoWsClient\Model\Api\ObjectManagerInterface;
@@ -15,7 +15,7 @@ class Mapper implements MapperInterface
     /**
      * @var string
      */
-    private static $collectionType = 'Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface';
+    private static $collectionType = 'Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface';
 
     /**
      * @var ObjectManagerInterface

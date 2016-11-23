@@ -55,7 +55,7 @@ class MapperTest extends BaseTest
         // collection mock
         $this->collectionMock->expects($this->once())
             ->method('getType')
-            ->willReturn('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface');
+            ->willReturn('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface');
 
         $this->collectionMock->expects($this->once())
             ->method('count')
@@ -78,7 +78,7 @@ class MapperTest extends BaseTest
             ->willReturn($data['link']);
 
         // schema link mock
-        $schemaLinkMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface')
+        $schemaLinkMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
             ->getMock();
 
         $schemaLinkMock->expects($this->exactly(2))
@@ -100,7 +100,7 @@ class MapperTest extends BaseTest
             ->method('getSchema');
 
         // schema new mock
-        $schemaNeoMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface')
+        $schemaNeoMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
             ->getMock();
 
         $schemaNeoMock->expects($this->exactly(2))
@@ -126,7 +126,7 @@ class MapperTest extends BaseTest
         // collection mock
         $this->collectionMock->expects($this->once())
             ->method('getType')
-            ->willReturn('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface');
+            ->willReturn('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface');
 
         $this->collectionMock->expects($this->once())
             ->method('count')

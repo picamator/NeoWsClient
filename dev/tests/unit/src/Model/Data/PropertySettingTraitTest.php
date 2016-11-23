@@ -1,11 +1,13 @@
 <?php
 namespace Picamator\NeoWsClient\Tests\Unit\Model\Data;
 
+use Picamator\NeoWsClient\Mapper\Data\Schema;
 use Picamator\NeoWsClient\Model\Data\Component\Collection;
 use Picamator\NeoWsClient\Model\Data\Neo;
 use Picamator\NeoWsClient\Model\Data\NeoDate;
 use Picamator\NeoWsClient\Model\Data\Primitive\Diameter;
 use Picamator\NeoWsClient\Model\Data\Statistics;
+use Picamator\NeoWsClient\Response\Data\Primitive\PaginatedLink;
 use Picamator\NeoWsClient\Tests\Unit\BaseTest;
 
 class PropertySettingTraitTest extends BaseTest
@@ -219,5 +221,40 @@ class PropertySettingTraitTest extends BaseTest
         ];
 
         new NeoDate($data);
+    }
+
+    public function testSetPropertySimpleDefault()
+    {
+        $data = [
+            'self' => 'self url',
+            'next' => 'next url'
+        ];
+
+        $paginatedLink = new PaginatedLink($data);
+
+        $this->assertEquals($data['self'], $paginatedLink->getSelf());
+        $this->assertEquals($data['next'], $paginatedLink->getNext());
+        $this->assertEmpty($paginatedLink->getPrev());
+    }
+
+    public function testSetPropertyComplexDefault()
+    {
+        $filterMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\FilterInterface')
+            ->getMock();
+
+        $data = [
+            'source' => 'name',
+            'destination' => 'name',
+            'destinationContainer' => 'SomeName',
+            'filter' => $filterMock
+        ];
+
+        $schema = new Schema($data);
+
+        $this->assertEquals($data['source'], $schema->getSource());
+        $this->assertEquals($data['destination'], $schema->getDestination());
+        $this->assertEquals($data['destinationContainer'], $schema->getDestinationContainer());
+        $this->assertEquals($data['filter'], $schema->getFilter());
+        $this->assertEmpty($schema->getSchema());
     }
 }

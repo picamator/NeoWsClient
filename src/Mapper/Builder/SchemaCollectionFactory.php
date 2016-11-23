@@ -2,7 +2,7 @@
 namespace Picamator\NeoWsClient\Mapper\Builder;
 
 use Picamator\NeoWsClient\Mapper\Api\Builder\SchemaCollectionFactoryInterface;
-use Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface;
+use Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface;
 use Picamator\NeoWsClient\Mapper\Api\FilterInterface;
 use Picamator\NeoWsClient\Model\Api\ObjectManagerInterface;
 
@@ -14,7 +14,7 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
     /**
      * @var string
      */
-    private static $collectionType = 'Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface;';
+    private static $collectionType = 'Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface';
 
     /**
      * @var ObjectManagerInterface
@@ -76,20 +76,16 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
     private function createSchemaRecursive(array $data)
     {
         // filter
-        $filter = null;
         if(!empty($data['filter'])) {
-            $filter = $this->createFilter($data['filter']);
-            unset($data['filter']);
+            $data['filter'] = $this->createFilter($data['filter']);
         }
 
         // schema
-        $schema = null;
         if(!empty($data['schema'])) {
-            $schema = $this->createSchemaRecursive($data['schema']);
-            unset($data['schema']);
+            $data['schema'] = $this->createSchemaRecursive($data['schema']);
         }
 
-        return $this->objectManager->create($this->schemaName, [$data, $filter, $schema]);
+        return $this->objectManager->create($this->schemaName, [$data]);
     }
 
     /**

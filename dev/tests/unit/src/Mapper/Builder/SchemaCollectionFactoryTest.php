@@ -59,13 +59,13 @@ class SchemaCollectionFactoryTest extends BaseTest
             ->getMock();
 
         // schema mock
-        $schemaFirstMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface')
+        $schemaFirstMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
             ->getMock();
 
-        $schemaSecondMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface')
+        $schemaSecondMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
             ->getMock();
 
-        $schemaThirdMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface')
+        $schemaThirdMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
             ->getMock();
 
         // object manager mock
@@ -77,29 +77,30 @@ class SchemaCollectionFactoryTest extends BaseTest
                 ], [
                     'Picamator\NeoWsClient\Mapper\Data\Component\Schema',
                     [
-                        ['source' => 'name',
-                        'destination' => 'name',
-                        'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo'],
-                        $filterMock,
-                        null,
+                        [   'source' => 'name',
+                            'destination' => 'name',
+                            'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo',
+                            'filter' => $filterMock,
+                        ]
                     ]
                 ], [
                     'Picamator\NeoWsClient\Mapper\Data\Component\Schema',
                     [
-                        ['source' => 'self',
-                         'destination' => 'self',
-                         'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Primitive\Link'],
-                        null,
-                        null,
+                        [
+                            'source' => 'self',
+                            'destination' => 'self',
+                            'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Primitive\Link',
+                        ]
                     ]
                 ], [
                     'Picamator\NeoWsClient\Mapper\Data\Component\Schema',
                     [
-                        ['source' => 'link',
-                        'destination' => 'link',
-                        'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo'],
-                        null,
-                        $schemaThirdMock,
+                        [
+                            'source' => 'link',
+                            'destination' => 'link',
+                            'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo',
+                            'schema' => $schemaThirdMock,
+                        ]
                     ]
                 ], ['Picamator\NeoWsClient\Model\Data\Component\Collection']
             )->willReturnOnConsecutiveCalls($filterMock, $schemaFirstMock, $schemaSecondMock, $schemaThirdMock, $this->collectionMock);

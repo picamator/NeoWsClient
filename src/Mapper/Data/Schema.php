@@ -1,7 +1,7 @@
 <?php
-namespace Picamator\NeoWsClient\Mapper\Data\Component;
+namespace Picamator\NeoWsClient\Mapper\Data;
 
-use Picamator\NeoWsClient\Mapper\Api\Data\Component\SchemaInterface;
+use Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface;
 use Picamator\NeoWsClient\Mapper\Api\FilterInterface;
 use Picamator\NeoWsClient\Model\Data\PropertySettingTrait;
 
@@ -41,16 +41,15 @@ class Schema implements SchemaInterface
 
     /**
      * @param array $data
-     * @param SchemaInterface | null $schema
      */
-    public function __construct(array $data, FilterInterface $filter = null, SchemaInterface $schema = null)
+    public function __construct(array $data)
     {
         $this->setPropertySimple('source', $data, 'string');
         $this->setPropertySimple('destination', $data, 'string');
         $this->setPropertySimple('destinationContainer', $data, 'string');
 
-        $this->schema = $schema;
-        $this->filter = $filter;
+        $this->setPropertyComplexDefault('filter', $data, 'Picamator\NeoWsClient\Mapper\Api\FilterInterface', null);
+        $this->setPropertyComplexDefault('schema', $data, 'Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface', null);
     }
 
     /**
@@ -82,7 +81,7 @@ class Schema implements SchemaInterface
      */
     public function getFilter()
     {
-        return $this->fitler;
+        return $this->filter;
     }
 
     /**
