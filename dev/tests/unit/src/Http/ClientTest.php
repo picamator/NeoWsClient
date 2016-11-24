@@ -51,7 +51,7 @@ class ClientTest extends BaseTest
             ->method('request')
             ->with($this->equalTo('get'), $this->equalTo('neo?detailed=1&token=my-token'));
 
-        $this->client->getResponse($resource, $paramList);
+        $this->client->request($resource, $paramList);
     }
 
     public function testEmptyParamListGetResponse()
@@ -69,7 +69,7 @@ class ClientTest extends BaseTest
             ->method('request')
             ->with($this->equalTo('get'), $this->equalTo('neo?token=my-token'));
 
-        $this->client->getResponse($resource);
+        $this->client->request($resource);
     }
 
     /**
@@ -90,6 +90,6 @@ class ClientTest extends BaseTest
             ->method('request')
             ->willThrowException(new CurlException('test'));
 
-        $this->client->getResponse($resource);
+        $this->client->request($resource);
     }
 }

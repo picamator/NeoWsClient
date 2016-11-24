@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 interface ClientInterface
 {
     /**
-     * Get response
+     * Request
      *
      * @param string $resource
      * @param array $paramList
@@ -19,5 +19,5 @@ interface ClientInterface
      *
      * @throws HttpClientException
      */
-    public function getResponse($resource, array $paramList = []);
+    public function request($resource, array $paramList = []);
 }

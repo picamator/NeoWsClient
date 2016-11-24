@@ -32,7 +32,7 @@ class Client implements ClientInterface
     /**
      * @inheritDoc
      */
-    public function getResponse($resource, array $paramList = [])
+    public function request($resource, array $paramList = [])
     {
         // override token
         $paramList['token'] = $this->config->getToken();
