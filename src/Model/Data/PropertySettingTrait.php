@@ -34,7 +34,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    final private function setPropertySimple($property, array $data, $type)
+    private function setPropertySimple($property, array $data, $type)
     {
         $this->validatePropertyExist($property, $data);
 
@@ -59,7 +59,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    final private function setPropertySimpleDefault($property, array $data, $type, $default)
+    private function setPropertySimpleDefault($property, array $data, $type, $default)
     {
         if(!array_key_exists($property, $data)) {
             $this->$property = $default;
@@ -79,7 +79,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    final private function setPropertyComplex($property, array $data, $type)
+    private function setPropertyComplex($property, array $data, $type)
     {
         $this->validatePropertyExist($property, $data);
 
@@ -104,7 +104,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    final private function setPropertyComplexDefault($property, array $data, $type, $default)
+    private function setPropertyComplexDefault($property, array $data, $type, $default)
     {
         if(!array_key_exists($property, $data)) {
             $this->$property = $default;
@@ -123,7 +123,7 @@ trait PropertySettingTrait
      *
      * @throws InvalidArgumentException
      */
-    final private function setPropertyCollection($property, array $data, $type)
+    private function setPropertyCollection($property, array $data, $type)
     {
         $this->validatePropertyExist($property, $data);
 
@@ -150,7 +150,7 @@ trait PropertySettingTrait
      * @param string $property
      * @param array $data
      */
-    final private function validatePropertyExist($property, array $data)
+    private function validatePropertyExist($property, array $data)
     {
         if(!array_key_exists($property, $data)) {
             throw new InvalidArgumentException(
@@ -166,7 +166,7 @@ trait PropertySettingTrait
      *
      * @return string
      */
-    final private function getType($value)
+    private function getType($value)
     {
         return is_object($value) ? get_class($value) : gettype($value);
     }
