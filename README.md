@@ -26,14 +26,9 @@ Update to your `composer.json` with:
 }
 ```
 
-Usage
------
-in-progress
-
-
-Cache
------
-in-progress
+Examples
+--------
+* [GET /rest/v1/stats](doc/example/statistics.php) 
 
 Arbitrary precision math
 ------------------------

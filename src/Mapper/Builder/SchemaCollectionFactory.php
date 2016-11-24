@@ -46,7 +46,7 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
     public function __construct(
         ObjectManagerInterface $objectManager,
         $className = 'Picamator\NeoWsClient\Model\Data\Component\Collection',
-        $schemaName = 'Picamator\NeoWsClient\Mapper\Data\Component\Schema'
+        $schemaName = 'Picamator\NeoWsClient\Mapper\Data\Schema'
     ) {
         $this->objectManager = $objectManager;
         $this->className = $className;
@@ -63,7 +63,7 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
             $collectionData[] = $this->createSchemaRecursive($item);
         }
 
-        return $this->objectManager->create($this->className, ['data' => $collectionData, 'type' => self::$collectionType]);
+        return $this->objectManager->create($this->className, [['data' => $collectionData, 'type' => self::$collectionType]]);
     }
 
     /**

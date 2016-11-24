@@ -26,7 +26,7 @@ class Config implements ConfigInterface
     /**
      * @var string
      */
-    private $token;
+    private $apiKey;
 
     /**
      * @var array
@@ -40,7 +40,7 @@ class Config implements ConfigInterface
     {
         $this->setPropertySimple('endPoint', $data, 'string');
         $this->setPropertySimpleDefault('proxy', $data, 'string', null);
-        $this->setPropertySimple('token', $data, 'string');
+        $this->setPropertySimple('apiKey', $data, 'string');
         $this->setPropertySimpleDefault('optionList', $data, 'array', []);
     }
 
@@ -63,9 +63,9 @@ class Config implements ConfigInterface
     /**
      * @inheritDoc
      */
-    public function getToken()
+    public function getApiKey()
     {
-        return $this->token;
+        return $this->apiKey;
     }
 
     /**

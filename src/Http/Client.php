@@ -35,7 +35,7 @@ class Client implements ClientInterface
     public function request($resource, array $paramList = [])
     {
         // override token
-        $paramList['token'] = $this->config->getToken();
+        $paramList['api_key'] = $this->config->getApiKey();
 
         // build url
         $url = $resource;

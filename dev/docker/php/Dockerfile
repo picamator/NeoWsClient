@@ -55,6 +55,9 @@ RUN docker-php-ext-install -j$(nproc) curl
 RUN apt-get install -y zlib1g-dev
 RUN docker-php-ext-install -j$(nproc) zip
 
+RUN apt-get install -y libxslt-dev
+RUN docker-php-ext-install -j$(nproc) xsl
+
 # php.ini
 ADD  ./dev/docker/php/config/php.ini /usr/local/etc/php/
 

@@ -91,8 +91,8 @@ class StatisticsManagerTest extends BaseTest
             $this->clientMock,
             $this->rateLimitFactoryMock,
             $this->responseFactoryMock,
-            $this->repositoryMock,
-            $this->mapperMock
+            $this->mapperMock,
+            $this->repositoryMock
         );
     }
 

@@ -37,37 +37,37 @@ class ClientTest extends BaseTest
 
     public function testGetResponse()
     {
-        $token = 'my-token';
+        $apiKey = 'my-token';
         $resource = 'neo';
         $paramList = ['detailed' => true];
 
         // config mock
         $this->configMock->expects($this->once())
-            ->method('getToken')
-            ->willReturn($token);
+            ->method('getApiKey')
+            ->willReturn($apiKey);
 
         // guzzle client mock
         $this->guzzleHttpClientMock->expects($this->once())
             ->method('request')
-            ->with($this->equalTo('get'), $this->equalTo('neo?detailed=1&token=my-token'));
+            ->with($this->equalTo('get'), $this->equalTo('neo?detailed=1&api_key=my-token'));
 
         $this->client->request($resource, $paramList);
     }
 
     public function testEmptyParamListGetResponse()
     {
-        $token = 'my-token';
+        $apiKey = 'my-token';
         $resource = 'neo';
 
         // config mock
         $this->configMock->expects($this->once())
-            ->method('getToken')
-            ->willReturn($token);
+            ->method('getApiKey')
+            ->willReturn($apiKey);
 
         // guzzle client mock
         $this->guzzleHttpClientMock->expects($this->once())
             ->method('request')
-            ->with($this->equalTo('get'), $this->equalTo('neo?token=my-token'));
+            ->with($this->equalTo('get'), $this->equalTo('neo?api_key=my-token'));
 
         $this->client->request($resource);
     }
@@ -77,13 +77,13 @@ class ClientTest extends BaseTest
      */
     public function testFailedGetResponse()
     {
-        $token = 'my-token';
+        $apiKey = 'my-token';
         $resource = 'neo';
 
         // config mock
         $this->configMock->expects($this->once())
-            ->method('getToken')
-            ->willReturn($token);
+            ->method('getApiKey')
+            ->willReturn($apiKey);
 
         // guzzle client mock
         $this->guzzleHttpClientMock->expects($this->once())

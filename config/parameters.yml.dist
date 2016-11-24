@@ -1,0 +1,9 @@
+parameters:
+  neo_ws_client.http:
+    endPoint: 'https://api.nasa.gov/neo/rest/v1/'
+    apiKey: 'DEMO_KEY'
+    # proxy is optional for debug
+    # proxy: '192.168.0.104:8888'
+    optionList:
+      # keep SSL verification true on production, @see http://docs.guzzlephp.org/en/latest/request-options.html#verify
+      verify: true

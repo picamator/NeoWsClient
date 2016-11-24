@@ -15,7 +15,7 @@ class DateTimeFilter implements FilterInterface
      *
      * @param string $data
      *
-     * @return float
+     * @return \DateTime
      */
     public function filter($data)
     {

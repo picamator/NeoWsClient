@@ -75,7 +75,7 @@ class SchemaCollectionFactoryTest extends BaseTest
                 [
                    'Picamator\NeoWsClient\Mapper\Filter\DateTime'
                 ], [
-                    'Picamator\NeoWsClient\Mapper\Data\Component\Schema',
+                    'Picamator\NeoWsClient\Mapper\Data\Schema',
                     [
                         [   'source' => 'name',
                             'destination' => 'name',
@@ -84,7 +84,7 @@ class SchemaCollectionFactoryTest extends BaseTest
                         ]
                     ]
                 ], [
-                    'Picamator\NeoWsClient\Mapper\Data\Component\Schema',
+                    'Picamator\NeoWsClient\Mapper\Data\Schema',
                     [
                         [
                             'source' => 'self',
@@ -93,7 +93,7 @@ class SchemaCollectionFactoryTest extends BaseTest
                         ]
                     ]
                 ], [
-                    'Picamator\NeoWsClient\Mapper\Data\Component\Schema',
+                    'Picamator\NeoWsClient\Mapper\Data\Schema',
                     [
                         [
                             'source' => 'link',

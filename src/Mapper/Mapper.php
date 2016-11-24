@@ -70,16 +70,16 @@ class Mapper implements MapperInterface
                 continue;
             }
 
+            $sourceData = $data[$item->getSource()];
             // apply filter
             $filter = $item->getFilter();
-            $sourceData = $data[$item->getSource()];
-            $sourceDataFiltered = $filter ? $filter->filter($sourceData) : $sourceData;
+            $sourceData = $filter ? $filter->filter($sourceData) : $sourceData;
 
             // apply sub schema
             $schema = $item->getSchema();
-            $mapData[$item->getDestination()] = $schema ? $this->mapRecursive([$schema], $sourceDataFiltered) : $sourceDataFiltered;
+            $mapData[$item->getDestination()] = $schema ? $this->mapRecursive([$schema], $sourceData) : $sourceData;
         }
 
-        return $this->objectManager->create($item->getDestinationContainer(), $mapData);
+        return $this->objectManager->create($item->getDestinationContainer(), [$mapData]);
     }
 }

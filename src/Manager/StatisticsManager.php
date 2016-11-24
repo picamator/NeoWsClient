@@ -27,20 +27,20 @@ class StatisticsManager extends AbstractManager
      * @param ClientInterface $client
      * @param RateLimitFactoryInterface $rateLimitFactory
      * @param ResponseFactoryInterface $responseFactory
-     * @param RepositoryInterface $repository
      * @param MapperInterface $mapper
+     * @param RepositoryInterface $repository
      */
     public function __construct(
         ClientInterface $client,
         RateLimitFactoryInterface $rateLimitFactory,
         ResponseFactoryInterface $responseFactory,
-        RepositoryInterface $repository,
-        MapperInterface $mapper
+        MapperInterface $mapper,
+        RepositoryInterface $repository
     ) {
         parent::__construct($client, $rateLimitFactory, $responseFactory);
 
-        $this->repository = $repository;
         $this->mapper = $mapper;
+        $this->repository = $repository;
     }
 
     /**

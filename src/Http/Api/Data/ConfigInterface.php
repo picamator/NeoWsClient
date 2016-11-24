@@ -21,11 +21,11 @@ interface ConfigInterface
     public function getProxy();
 
     /**
-     * Get token
+     * Get api key
      *
      * @return string
      */
-    public function getToken();
+    public function getApiKey();
 
     /**
      * Get option list
