@@ -5,9 +5,8 @@ use Picamator\NeoWsClient\Mapper\Data\Schema;
 use Picamator\NeoWsClient\Model\Data\Component\Collection;
 use Picamator\NeoWsClient\Model\Data\Neo;
 use Picamator\NeoWsClient\Model\Data\NeoDate;
-use Picamator\NeoWsClient\Model\Data\Primitive\Diameter;
 use Picamator\NeoWsClient\Model\Data\Statistics;
-use Picamator\NeoWsClient\Response\Data\Primitive\PaginatedLink;
+use Picamator\NeoWsClient\Model\Data\Primitive\PaginatedLink;
 use Picamator\NeoWsClient\Tests\Unit\BaseTest;
 
 class PropertySettingTraitTest extends BaseTest
@@ -255,6 +254,6 @@ class PropertySettingTraitTest extends BaseTest
         $this->assertEquals($data['destination'], $schema->getDestination());
         $this->assertEquals($data['destinationContainer'], $schema->getDestinationContainer());
         $this->assertEquals($data['filter'], $schema->getFilter());
-        $this->assertEmpty($schema->getSchema());
+        $this->assertNull($schema->getSchema());
     }
 }

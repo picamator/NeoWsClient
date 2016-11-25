@@ -137,9 +137,10 @@ class MapperTest extends BaseTest
             ->method('getDestination')
             ->willReturn('orbitingBody');
 
-        $schemaCloseApproachDataMock->expects($this->exactly(2))
+        $schemaCloseApproachDataMock->expects($this->once())
             ->method('getDestinationContainer')
             ->willReturn('Picamator\NeoWsClient\Model\Data\Component\CloseApproach');
+
 
         $schemaCloseApproachDataMock->expects($this->once())
             ->method('getFilter');
@@ -152,13 +153,8 @@ class MapperTest extends BaseTest
             ->getMock();
 
         $schemaCollectionMock->expects($this->once())
-            ->method('getData')
-            ->willReturn([$schemaCloseApproachDataMock]);
-
-        $schemaCollectionMock->expects($this->once())
             ->method('getIterator')
             ->willReturn(new \ArrayIterator([$schemaCloseApproachDataMock]));
-
 
         // schema new mock
         $schemaNeoMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
@@ -175,6 +171,10 @@ class MapperTest extends BaseTest
         $schemaNeoMock->expects($this->once())
             ->method('getDestinationContainer')
             ->willReturn('Picamator\NeoWsClient\Model\Data\Neo');
+
+        $schemaNeoMock->expects($this->once())
+            ->method('getCollectionOf')
+            ->willReturn('Picamator\NeoWsClient\Model\Api\Data\Component\CloseApproachInterface');
 
         $schemaNeoMock->expects($this->once())
             ->method('getFilter');
@@ -204,6 +204,11 @@ class MapperTest extends BaseTest
                 ['Picamator\NeoWsClient\Model\Data\Component\Collection'],
                 ['Picamator\NeoWsClient\Model\Data\Neo']
             );
+
+        // never
+        $schemaCloseApproachDataMock->expects($this->never())
+            ->method('getCollectionOf');
+
 
         $this->mapper->map($this->collectionMock, $data);
     }

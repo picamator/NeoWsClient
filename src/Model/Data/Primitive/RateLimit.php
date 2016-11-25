@@ -1,8 +1,8 @@
 <?php
-namespace Picamator\NeoWsClient\Response\Data\Primitive;
+namespace Picamator\NeoWsClient\Model\Data\Primitive;
 
 use Picamator\NeoWsClient\Model\Data\PropertySettingTrait;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface;
 
 /**
  * Rate limit value object

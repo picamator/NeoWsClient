@@ -1,5 +1,5 @@
 <?php
-namespace Picamator\NeoWsClient\Response\Api\Data\Primitive;
+namespace Picamator\NeoWsClient\Model\Api\Data\Primitive;
 
 /**
  * Rate limit value object

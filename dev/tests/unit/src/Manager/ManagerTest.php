@@ -1,13 +1,13 @@
 <?php
 namespace Picamator\NeoWsClient\Tests\Unit\Manager;
 
-use Picamator\NeoWsClient\Manager\StatisticsManager;
+use Picamator\NeoWsClient\Manager\Manager;
 use Picamator\NeoWsClient\Tests\Unit\BaseTest;
 
-class StatisticsManagerTest extends BaseTest
+class ManagerTest extends BaseTest
 {
     /**
-     * @var StatisticsManager
+     * @var Manager
      */
     private $manager;
 
@@ -47,7 +47,7 @@ class StatisticsManagerTest extends BaseTest
     private $mapperMock;
 
     /**
-     * @var \Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface | \PHPUnit_Framework_MockObject_MockObject
+     * @var \Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface | \PHPUnit_Framework_MockObject_MockObject
      */
     private $rateLimitMock;
 
@@ -81,13 +81,13 @@ class StatisticsManagerTest extends BaseTest
         $this->mapperMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\MapperInterface')
             ->getMock();
 
-        $this->rateLimitMock = $this->getMockBuilder('Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface')
+        $this->rateLimitMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface')
             ->getMock();
 
         $this->collectionMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface')
             ->getMock();
 
-        $this->manager = new StatisticsManager(
+        $this->manager = new Manager(
             $this->clientMock,
             $this->rateLimitFactoryMock,
             $this->responseFactoryMock,

@@ -69,4 +69,12 @@ class StatisticsRepository implements RepositoryInterface
 
         return $this->schema;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSchemaConfig()
+    {
+        return self::$schemaConfig;
+    }
 }

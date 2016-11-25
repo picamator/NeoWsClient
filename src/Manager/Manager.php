@@ -8,9 +8,9 @@ use Picamator\NeoWsClient\Mapper\Api\RepositoryInterface;
 use Picamator\NeoWsClient\Response\Api\Builder\ResponseFactoryInterface;
 
 /**
- * Statistics manager
+ * Manager
  */
-class StatisticsManager extends AbstractManager
+class Manager extends AbstractManager
 {
     /**
      * @var RepositoryInterface

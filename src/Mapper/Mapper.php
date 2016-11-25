@@ -87,11 +87,13 @@ class Mapper implements MapperInterface
                 : $sourceData;
 
             // apply sub schema
-            $schema = $item->getSchema();
-            if ($schema) {
-                $sourceData = $this->hasDataCollection($sourceData)
-                    ? $this->mapCollection($schema, $sourceData)
-                    : $this->mapRecursive($schema, $sourceData);
+            $schemaItem = $item->getSchema();
+            if ($schemaItem) {
+                $collectionOf = $item->getCollectionOf();
+
+                $sourceData = $collectionOf
+                    ? $this->mapCollection($schemaItem, $sourceData, $collectionOf)
+                    : $this->mapRecursive($schemaItem, $sourceData);
             }
 
             $mapData[$item->getDestination()] = $sourceData;
@@ -105,33 +107,17 @@ class Mapper implements MapperInterface
      *
      * @param CollectionInterface $schema
      * @param array $data
+     * @param string $collectionOf
      *
      * @return CollectionInterface
      */
-    private function mapCollection(CollectionInterface $schema, array $data)
+    private function mapCollection(CollectionInterface $schema, array $data, $collectionOf)
     {
-        $collection['data'] = [];
+        $collection = ['data' => [], 'type' => $collectionOf];
         foreach($data as $item) {
             $collection['data'][] = $this->mapRecursive($schema, $item);
         }
 
-        /** @var SchemaInterface $schemaItem */
-        $schemaItem = current($schema->getData());
-        $typeList = class_implements($schemaItem->getDestinationContainer());
-        $collection['type'] = $typeList ? current($typeList) : '';
-
         return $this->objectManager->create($this->collectionName, [$collection]);
-    }
-
-    /**
-     * Has data collection
-     *
-     * @param array $data
-     *
-     * @return bool true if it's collection, false otherwise
-     */
-    private function hasDataCollection(array $data)
-    {
-        return is_int(key($data));
     }
 }

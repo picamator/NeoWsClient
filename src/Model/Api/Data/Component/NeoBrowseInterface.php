@@ -1,13 +1,14 @@
 <?php
-namespace Picamator\NeoWsClient\Response\Api\Data\Component;
+namespace Picamator\NeoWsClient\Model\Api\Data\Component;
 
 use Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\PaginatedLinkInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\PageInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\PaginatedLinkInterface;
 
 /**
- * Feed value object
+ * Neo browse value object
  */
-interface FeedInterface
+interface NeoBrowseInterface
 {
     /**
      * Get link
@@ -17,11 +18,11 @@ interface FeedInterface
     public function getLink();
 
     /**
-     * Get element count
+     * Get page
      *
-     * @return int
+     * @return PageInterface
      */
-    public function getElementCount();
+    public function getPage();
 
     /**
      * Get collection of Neo's objects

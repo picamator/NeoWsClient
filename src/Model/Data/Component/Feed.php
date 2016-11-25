@@ -1,10 +1,10 @@
 <?php
-namespace Picamator\NeoWsClient\Response\Data\Component;
+namespace Picamator\NeoWsClient\Model\Data\Component;
 
 use Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface;
 use Picamator\NeoWsClient\Model\Data\PropertySettingTrait;
-use Picamator\NeoWsClient\Response\Api\Data\Component\FeedInterface;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\PaginatedLinkInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Component\FeedInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\PaginatedLinkInterface;
 
 /**
  * Feed value object
@@ -35,7 +35,7 @@ class Feed implements FeedInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyComplex('link', $data, 'Picamator\NeoWsClient\Response\Api\Data\Primitive\PaginatedLinkInterface');
+        $this->setPropertyComplex('link', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\PaginatedLinkInterface');
         $this->setPropertySimple('elementCount', $data, 'int');
         $this->setPropertyCollection('neoList', $data, 'Picamator\NeoWsClient\Model\Api\Data\NeoDateInterface');
     }

@@ -3,7 +3,7 @@ namespace Picamator\NeoWsClient\Response\Builder;
 
 use Picamator\NeoWsClient\Model\Api\ObjectManagerInterface;
 use Picamator\NeoWsClient\Response\Api\Builder\ResponseFactoryInterface;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface;
 
 /**
  * Create Response
@@ -33,7 +33,6 @@ class ResponseFactory implements ResponseFactoryInterface
         $this->objectManager = $objectManager;
         $this->className = $className;
     }
-
 
     /**
      * @inheritDoc

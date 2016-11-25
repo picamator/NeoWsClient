@@ -7,7 +7,7 @@ require_once 'app.php';
 
 use \Picamator\NeoWsClient\Request\Data\StatisticsRequest;
 
-/** @var  \Picamator\NeoWsClient\Manager\StatisticsManager $manager */
+/** @var  \Picamator\NeoWsClient\Manager\Manager $manager */
 $manager = $container->get('neo_ws_manager_statistics_manager');
 
 // get response

@@ -50,7 +50,7 @@ class RateLimitFactoryTest extends BaseTest
         // object manager mock
         $this->objectManagerMock->expects($this->once())
             ->method('create')
-            ->with($this->equalTo('Picamator\NeoWsClient\Response\Data\Primitive\RateLimit'), [[
+            ->with($this->equalTo('Picamator\NeoWsClient\Model\Data\Primitive\RateLimit'), [[
                 'limit' => (int) $limit,
                 'remaining' => (int) $remaining,
             ]]);

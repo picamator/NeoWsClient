@@ -36,7 +36,7 @@ class AbstractManagerTest extends BaseTest
     private $responseMsgMock;
 
     /**
-     * @var \Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface | \PHPUnit_Framework_MockObject_MockObject
+     * @var \Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface | \PHPUnit_Framework_MockObject_MockObject
      */
     private $rateLimitMock;
 
@@ -59,7 +59,7 @@ class AbstractManagerTest extends BaseTest
         $this->responseMsgMock = $this->getMockBuilder('Psr\Http\Message\ResponseInterface')
             ->getMock();
 
-        $this->rateLimitMock = $this->getMockBuilder('Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface')
+        $this->rateLimitMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface')
             ->getMock();
 
         $this->managerMock = $this->getMockBuilder('Picamator\NeoWsClient\Manager\AbstractManager')

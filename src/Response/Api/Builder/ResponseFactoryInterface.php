@@ -1,7 +1,7 @@
 <?php
 namespace Picamator\NeoWsClient\Response\Api\Builder;
 
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface;
 use Picamator\NeoWsClient\Response\Api\Data\ResponseInterface;
 
 /**

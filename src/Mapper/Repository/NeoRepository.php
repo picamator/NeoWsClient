@@ -118,6 +118,7 @@ class NeoRepository implements RepositoryInterface
             'source' => 'close_approach_data',
             'destination' => 'closeApproachData',
             'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo',
+            'collectionOf' => 'Picamator\NeoWsClient\Model\Api\Data\Component\CloseApproachInterface',
             'schema' => [
                 [
                     'source' => 'close_approach_date',
@@ -287,5 +288,13 @@ class NeoRepository implements RepositoryInterface
         }
 
         return $this->schema;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getSchemaConfig()
+    {
+        return self::$schemaConfig;
     }
 }

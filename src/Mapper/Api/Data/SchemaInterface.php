@@ -30,6 +30,13 @@ interface SchemaInterface
     public function getDestinationContainer();
 
     /**
+     * Get interface that are going to be present inside collection
+     *
+     * @return string
+     */
+    public function getCollectionOf();
+
+    /**
      * Get filter
      *
      * @return FilterInterface | null

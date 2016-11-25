@@ -1,0 +1,7 @@
+{
+  "near_earth_object_count": 15282,
+  "close_approach_count": 431590,
+  "last_updated": "2016-11-19",
+  "source": "All the NEO data is from NASA JPL NEO team.",
+  "nasa_jpl_url": "http://neo.jpl.nasa.gov/"
+}

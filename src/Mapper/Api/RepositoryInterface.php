@@ -14,4 +14,11 @@ interface RepositoryInterface
      * @return CollectionInterface
      */
     public function findSchema();
+
+    /**
+     * Get schema configuration
+     *
+     * @return array
+     */
+    public function getSchemaConfig();
 }

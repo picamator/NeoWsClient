@@ -2,7 +2,7 @@
 namespace Picamator\NeoWsClient\Response\Data;
 
 use Picamator\NeoWsClient\Model\Data\PropertySettingTrait;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface;
 use Picamator\NeoWsClient\Response\Api\Data\ResponseInterface;
 
 /**
@@ -34,7 +34,7 @@ class Response  implements ResponseInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyComplex('rateLimit', $data, 'Picamator\NeoWsClient\Response\Api\Data\Primitive\RateLimitInterface');
+        $this->setPropertyComplex('rateLimit', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\RateLimitInterface');
         $this->setPropertySimple('code', $data, 'int');
         $this->setPropertySimple('data', $data, 'object');
     }

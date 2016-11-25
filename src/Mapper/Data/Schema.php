@@ -30,6 +30,11 @@ class Schema implements SchemaInterface
     private $destinationContainer;
 
     /**
+     * @var string
+     */
+    private $collectionOf;
+
+    /**
      * @var FilterInterface
      */
     private $filter;
@@ -48,6 +53,7 @@ class Schema implements SchemaInterface
         $this->setPropertySimple('destination', $data, 'string');
         $this->setPropertySimple('destinationContainer', $data, 'string');
 
+        $this->setPropertySimpleDefault('collectionOf', $data, 'string', null);
         $this->setPropertyComplexDefault('filter', $data, 'Picamator\NeoWsClient\Mapper\Api\FilterInterface', null);
         $this->setPropertyCollectionDefault('schema', $data, 'Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface', null);
     }
@@ -74,6 +80,14 @@ class Schema implements SchemaInterface
     public function getDestinationContainer()
     {
         return $this->destinationContainer;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCollectionOf()
+    {
+        return $this->collectionOf;
     }
 
     /**

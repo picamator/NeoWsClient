@@ -1,11 +1,11 @@
 <?php
-namespace Picamator\NeoWsClient\Response\Data\Component;
+namespace Picamator\NeoWsClient\Model\Data\Component;
 
 use Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface;
 use Picamator\NeoWsClient\Model\Data\PropertySettingTrait;
-use Picamator\NeoWsClient\Response\Api\Data\Component\NeoBrowseInterface;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\PageInterface;
-use Picamator\NeoWsClient\Response\Api\Data\Primitive\PaginatedLinkInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Component\NeoBrowseInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\PageInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Primitive\PaginatedLinkInterface;
 
 /**
  * Neo browse value object
@@ -36,8 +36,8 @@ class NeoBrowse implements NeoBrowseInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertyComplex('link', $data, 'Picamator\NeoWsClient\Response\Api\Data\Primitive\PaginatedLinkInterface');
-        $this->setPropertyComplex('page', $data, 'Picamator\NeoWsClient\Response\Api\Data\Primitive\PageInterface');
+        $this->setPropertyComplex('link', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\PaginatedLinkInterface');
+        $this->setPropertyComplex('page', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\PageInterface');
         $this->setPropertyCollection('neoList', $data, 'Picamator\NeoWsClient\Model\Api\Data\NeoInterface');
     }
 

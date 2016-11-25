@@ -36,7 +36,7 @@ class RateLimitFactory implements RateLimitFactoryInterface
      */
     public function __construct(
         ObjectManagerInterface $objectManager,
-        $className = 'Picamator\NeoWsClient\Response\Data\Primitive\RateLimit'
+        $className = 'Picamator\NeoWsClient\Model\Data\Primitive\RateLimit'
     ) {
         $this->objectManager = $objectManager;
         $this->className = $className;

@@ -28,8 +28,15 @@ Update to your `composer.json` with:
 
 Examples
 --------
+To run examples please create parameters.yml in config directory using as a template [parameters.yml.dist](config/parameters.yml.dist).
+The `DEMO_KEY` api token is a valid one. It has limit number of requests per hour, per day.
+More information is in [NASA official documentation](https://api.nasa.gov/api.html#authentication).
+
+Example list:
+
 * [GET /rest/v1/stats](doc/example/statistics.php)
 * [GET /rest/v1/neo/{asteroid_id}](doc/example/neo.php)
+* [GET /rest/v1/neo/browse](doc/example/neo.browse.php)
 
 Arbitrary precision math
 ------------------------
@@ -37,6 +44,30 @@ NeoWsClient formats only Date to DateTime object all others keeps original API's
 NeoWs uses string for long precision float like e.g. `.6304873017364636` execution `floatval` on them removes last two digits.
 Therefore NeoWsClient does not convert strings to `int` or `float`. To make any math with `string floats` please use [BCMath](http://php.net/manual/en/book.bc.php).
 BCMath takes care of arbitrary precision mathematics. 
+
+Technical specification
+-----------------------
+That section describes extension and configuration points.
+
+### Dependency injection
+NeoWsClient uses [Symfony DI](https://symfony.com/doc/current/components/dependency_injection.html).
+It's configuration in [services.yml](config/services.yml).
+
+### Data mapping
+NeoWsClient works with data mapping to create objects based on Api response.
+To make customization or build objects from API response it's need to create mapper repository object.
+Mapper repository object is a simple data storage over schema with implementation `Mapper\Api\RespositoryInterface`.
+
+The schema contains:
+
+ Name                   | Is required   | Description 
+ ---                    | ---           | ---
+ source                 | yes           | Key in API response
+ destination            | yes           | Property inside NeoWsClient value object
+ destinationContainer   | yes           | Name of NeoWsClient object where `destination` property is located
+ schema                 | no            | Sub schema
+ collectionOf           | no            | Interface name of NeoWsClient objects that will be present inside collection. It's an interface of  `destinationContainer` in `sub-schema`.
+ filter                 | no            | Name of NeoWsClient filter object, tha runs over API's data
 
 Documentation
 -------------
