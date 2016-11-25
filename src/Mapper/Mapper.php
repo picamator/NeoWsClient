@@ -23,11 +23,20 @@ class Mapper implements MapperInterface
     private $objectManager;
 
     /**
-     * @param ObjectManagerInterface $objectManager
+     * @var string
      */
-    public function __construct(ObjectManagerInterface $objectManager)
-    {
+    private $collectionName;
+
+    /**
+     * @param ObjectManagerInterface $objectManager
+     * @param string $collectionName
+     */
+    public function __construct(
+        ObjectManagerInterface $objectManager,
+        $collectionName = 'Picamator\NeoWsClient\Model\Data\Component\Collection'
+    ) {
         $this->objectManager = $objectManager;
+        $this->collectionName = $collectionName;
     }
 
     /**
@@ -54,13 +63,13 @@ class Mapper implements MapperInterface
     /**
      * Map recursive
      *
-     * @param CollectionInterface | array  $schema
+     * @param CollectionInterface $schema
      * @param array $data
      * @param array | null $mapData
      *
      * @return mixed
      */
-    private function mapRecursive($schema, array $data, array $mapData = null)
+    private function mapRecursive(CollectionInterface $schema, array $data, array $mapData = null)
     {
         $mapData = $mapData ? : [];
 
@@ -73,13 +82,56 @@ class Mapper implements MapperInterface
             $sourceData = $data[$item->getSource()];
             // apply filter
             $filter = $item->getFilter();
-            $sourceData = $filter ? $filter->filter($sourceData) : $sourceData;
+            $sourceData = $filter
+                ? $filter->filter($sourceData)
+                : $sourceData;
 
             // apply sub schema
             $schema = $item->getSchema();
-            $mapData[$item->getDestination()] = $schema ? $this->mapRecursive([$schema], $sourceData) : $sourceData;
+            if ($schema) {
+                $sourceData = $this->hasDataCollection($sourceData)
+                    ? $this->mapCollection($schema, $sourceData)
+                    : $this->mapRecursive($schema, $sourceData);
+            }
+
+            $mapData[$item->getDestination()] = $sourceData;
         }
 
         return $this->objectManager->create($item->getDestinationContainer(), [$mapData]);
+    }
+
+    /**
+     * Map collection
+     *
+     * @param CollectionInterface $schema
+     * @param array $data
+     *
+     * @return CollectionInterface
+     */
+    private function mapCollection(CollectionInterface $schema, array $data)
+    {
+        $collection['data'] = [];
+        foreach($data as $item) {
+            $collection['data'][] = $this->mapRecursive($schema, $item);
+        }
+
+        /** @var SchemaInterface $schemaItem */
+        $schemaItem = current($schema->getData());
+        $typeList = class_implements($schemaItem->getDestinationContainer());
+        $collection['type'] = $typeList ? current($typeList) : '';
+
+        return $this->objectManager->create($this->collectionName, [$collection]);
+    }
+
+    /**
+     * Has data collection
+     *
+     * @param array $data
+     *
+     * @return bool true if it's collection, false otherwise
+     */
+    private function hasDataCollection(array $data)
+    {
+        return is_int(key($data));
     }
 }

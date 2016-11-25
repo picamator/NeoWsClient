@@ -36,7 +36,7 @@ class NeoRequest implements NeoRequestInterface
         $this->setPropertySimple('asteroidId', $data, 'string');
         $this->setPropertySimpleDefault('resource', $data, 'string', 'neo');
 
-        $this->resource = trim('/\\', $this->resource) . '/' . $this->asteroidId;
+        $this->resource = trim( $this->resource, '/\\') . '/' . $this->asteroidId;
         $this->paramList = [];
     }
 

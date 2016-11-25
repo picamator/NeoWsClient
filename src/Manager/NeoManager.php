@@ -3,14 +3,15 @@ namespace Picamator\NeoWsClient\Manager;
 
 use Picamator\NeoWsClient\Http\Api\ClientInterface;
 use Picamator\NeoWsClient\Manager\Api\Builder\RateLimitFactoryInterface;
+use Picamator\NeoWsClient\Manager\Api\StatisticsManagerInterface;
 use Picamator\NeoWsClient\Mapper\Api\MapperInterface;
 use Picamator\NeoWsClient\Mapper\Api\RepositoryInterface;
 use Picamator\NeoWsClient\Response\Api\Builder\ResponseFactoryInterface;
 
 /**
- * Statistics manager
+ * Neo manager
  */
-class StatisticsManager extends AbstractManager
+class NeoManager extends AbstractManager
 {
     /**
      * @var RepositoryInterface

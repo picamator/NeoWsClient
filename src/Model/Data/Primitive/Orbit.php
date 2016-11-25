@@ -109,7 +109,7 @@ class Orbit implements OrbitInterface
     public function __construct(array $data)
     {
         $this->setPropertySimple('orbitId', $data, 'string');
-        $this->setPropertyComplex('orbitDeterminationDate', $data, 'DataTime');
+        $this->setPropertyComplex('orbitDeterminationDate', $data, 'DateTime');
         $this->setPropertySimple('orbitUncertainty', $data, 'string');
         $this->setPropertySimple('minimumOrbitIntersection', $data, 'string');
         $this->setPropertySimple('minimumOrbitIntersection', $data, 'string');

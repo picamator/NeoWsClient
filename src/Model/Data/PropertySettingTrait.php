@@ -145,6 +145,25 @@ trait PropertySettingTrait
     }
 
     /**
+     * Set collection property default
+     *
+     * @param string $property
+     * @param array $data
+     * @param string $type
+     *
+     * @throws InvalidArgumentException
+     */
+    private function setPropertyCollectionDefault($property, array $data, $type, $default)
+    {
+        if(!array_key_exists($property, $data)) {
+            $this->$property = $default;
+            return;
+        }
+
+        $this->setPropertyCollection($property, $data,  $type);
+    }
+
+    /**
      * Validate property exist
      *
      * @param string $property

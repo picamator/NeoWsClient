@@ -49,7 +49,7 @@ class Schema implements SchemaInterface
         $this->setPropertySimple('destinationContainer', $data, 'string');
 
         $this->setPropertyComplexDefault('filter', $data, 'Picamator\NeoWsClient\Mapper\Api\FilterInterface', null);
-        $this->setPropertyComplexDefault('schema', $data, 'Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface', null);
+        $this->setPropertyCollectionDefault('schema', $data, 'Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface', null);
     }
 
     /**

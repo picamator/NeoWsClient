@@ -82,7 +82,12 @@ class SchemaCollectionFactory implements SchemaCollectionFactoryInterface
 
         // schema
         if(!empty($data['schema'])) {
-            $data['schema'] = $this->createSchemaRecursive($data['schema']);
+            $schemaCollection = ['type' => self::$collectionType, 'data'=> []];
+            foreach($data['schema'] as $item) {
+                $schemaCollection['data'][] = $this->createSchemaRecursive($item);
+            }
+
+            $data['schema'] = $this->objectManager->create($this->className, [$schemaCollection]);
         }
 
         return $this->objectManager->create($this->schemaName, [$data]);

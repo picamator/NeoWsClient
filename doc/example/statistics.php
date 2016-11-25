@@ -31,6 +31,6 @@ Close approach count    | {$data->getCloseApproachCount()}
 Last updated            | {$data->getLastUpdated()->format('Y-m-d')}
 NEO count               | {$data->getNeoCount()}
 Source                  | {$data->getSource()}
-NASA jpl url            | {$data->getNasaJplUrl()}
+NASA JPL url            | {$data->getNasaJplUrl()}
 
 EOT;

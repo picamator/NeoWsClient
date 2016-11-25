@@ -46,7 +46,7 @@ class CloseApproach implements CloseApproachInterface
     public function __construct(array $data) {
         $this->setPropertyComplex('relativeVelocity', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\VelocityInterface');
         $this->setPropertyComplex('missDistance', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\DistanceInterface');
-        $this->setPropertyComplex('closeApproachTime', $data, 'DateTime');
+        $this->setPropertyComplex('closeApproachDate', $data, 'DateTime');
         $this->setPropertySimple('epochDateCloseApproach', $data, 'int');
         $this->setPropertySimple('orbitingBody', $data, 'string');
     }

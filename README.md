@@ -28,7 +28,8 @@ Update to your `composer.json` with:
 
 Examples
 --------
-* [GET /rest/v1/stats](doc/example/statistics.php) 
+* [GET /rest/v1/stats](doc/example/statistics.php)
+* [GET /rest/v1/neo/{asteroid_id}](doc/example/neo.php)
 
 Arbitrary precision math
 ------------------------

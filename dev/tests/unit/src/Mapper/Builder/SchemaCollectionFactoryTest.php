@@ -46,11 +46,11 @@ class SchemaCollectionFactoryTest extends BaseTest
                 'source' => 'link',
                 'destination' => 'link',
                 'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo',
-                'schema' => [
+                'schema' => [[
                     'source' => 'self',
                     'destination' => 'self',
                     'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Primitive\Link'
-                ]
+                ]]
             ]
         ];
 
@@ -69,7 +69,7 @@ class SchemaCollectionFactoryTest extends BaseTest
             ->getMock();
 
         // object manager mock
-        $this->objectManagerMock->expects($this->exactly(5))
+        $this->objectManagerMock->expects($this->exactly(6))
             ->method('create')
             ->withConsecutive(
                 [
@@ -93,17 +93,19 @@ class SchemaCollectionFactoryTest extends BaseTest
                         ]
                     ]
                 ], [
+                    'Picamator\NeoWsClient\Model\Data\Component\Collection'
+                ], [
                     'Picamator\NeoWsClient\Mapper\Data\Schema',
                     [
                         [
                             'source' => 'link',
                             'destination' => 'link',
                             'destinationContainer' => 'Picamator\NeoWsClient\Model\Data\Neo',
-                            'schema' => $schemaThirdMock,
+                            'schema' => $this->collectionMock,
                         ]
                     ]
                 ], ['Picamator\NeoWsClient\Model\Data\Component\Collection']
-            )->willReturnOnConsecutiveCalls($filterMock, $schemaFirstMock, $schemaSecondMock, $schemaThirdMock, $this->collectionMock);
+            )->willReturnOnConsecutiveCalls($filterMock, $schemaFirstMock, $schemaSecondMock, $this->collectionMock, $schemaThirdMock,  $this->collectionMock);
 
 
         $this->schemaCollectionFactory->create($data);

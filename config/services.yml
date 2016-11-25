@@ -38,6 +38,10 @@ services:
     class: 'Picamator\NeoWsClient\Mapper\Repository\StatisticsRepository'
     arguments: ['@neo_ws_mapper_builder_schema_collection_factory']
 
+  neo_ws_mapper_repository_neo_repository:
+    class: 'Picamator\NeoWsClient\Mapper\Repository\NeoRepository'
+    arguments: ['@neo_ws_mapper_builder_schema_collection_factory']
+
   # Manager
   # =======
   neo_ws_manager_builder_rate_limit_factory:
@@ -47,3 +51,7 @@ services:
   neo_ws_manager_statistics_manager:
     class: 'Picamator\NeoWsClient\Manager\StatisticsManager'
     arguments: ['@neo_ws_http_client', '@neo_ws_manager_builder_rate_limit_factory', '@neo_ws_response_builder_response_factory', '@neo_ws_mapper_mapper', '@neo_ws_mapper_repository_statistics_repository']
+
+  neo_ws_manager_neo_manager:
+      class: 'Picamator\NeoWsClient\Manager\NeoManager'
+      arguments: ['@neo_ws_http_client', '@neo_ws_manager_builder_rate_limit_factory', '@neo_ws_response_builder_response_factory', '@neo_ws_mapper_mapper', '@neo_ws_mapper_repository_neo_repository']

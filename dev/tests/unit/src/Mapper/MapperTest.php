@@ -66,7 +66,7 @@ class MapperTest extends BaseTest
 
     public function testMap()
     {
-        $data = ['link' => ['self' => 'test']];
+        $data = ['name' => 'test name'];
 
         // filter mock
         $filterMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\FilterInterface')
@@ -74,30 +74,8 @@ class MapperTest extends BaseTest
 
         $filterMock->expects($this->once())
             ->method('filter')
-            ->with($this->equalTo($data['link']))
-            ->willReturn($data['link']);
-
-        // schema link mock
-        $schemaLinkMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
-            ->getMock();
-
-        $schemaLinkMock->expects($this->exactly(2))
-            ->method('getSource')
-            ->willReturn('self');
-
-        $schemaLinkMock->expects($this->once())
-            ->method('getDestination')
-            ->willReturn('self');
-
-        $schemaLinkMock->expects($this->once())
-            ->method('getDestinationContainer')
-            ->willReturn('Picamator\NeoWsClient\Model\Data\Primitive\Link');
-
-        $schemaLinkMock->expects($this->once())
-            ->method('getFilter');
-
-        $schemaLinkMock->expects($this->once())
-            ->method('getSchema');
+            ->with($this->equalTo($data['name']))
+            ->willReturn($data['name']);
 
         // schema new mock
         $schemaNeoMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
@@ -105,11 +83,11 @@ class MapperTest extends BaseTest
 
         $schemaNeoMock->expects($this->exactly(2))
             ->method('getSource')
-            ->willReturn('link');
+            ->willReturn('name');
 
         $schemaNeoMock->expects($this->once())
             ->method('getDestination')
-            ->willReturn('link');
+            ->willReturn('name');
 
         $schemaNeoMock->expects($this->once())
             ->method('getDestinationContainer')
@@ -120,8 +98,7 @@ class MapperTest extends BaseTest
             ->willReturn($filterMock);
 
         $schemaNeoMock->expects($this->once())
-            ->method('getSchema')
-            ->willReturn($schemaLinkMock);
+            ->method('getSchema');
 
         // collection mock
         $this->collectionMock->expects($this->once())
@@ -132,16 +109,99 @@ class MapperTest extends BaseTest
             ->method('count')
             ->willReturn(1);
 
+        $this->collectionMock->expects($this->once())
+            ->method('getIterator')
+            ->willReturn(new \ArrayIterator([$schemaNeoMock]));
+
+        // object manager
+        $this->objectManagerMock->expects($this->once())
+            ->method('create')
+            ->with($this->equalTo('Picamator\NeoWsClient\Model\Data\Neo'));
+
+        $this->mapper->map($this->collectionMock, $data);
+    }
+
+    public function testCollectionMap()
+    {
+        $data = ['close_approach_data' => [['orbiting_body' => 'Mars']]];
+
+        // schema close approach data
+        $schemaCloseApproachDataMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
+            ->getMock();
+
+        $schemaCloseApproachDataMock->expects($this->exactly(2))
+            ->method('getSource')
+            ->willReturn('orbiting_body');
+
+        $schemaCloseApproachDataMock->expects($this->once())
+            ->method('getDestination')
+            ->willReturn('orbitingBody');
+
+        $schemaCloseApproachDataMock->expects($this->exactly(2))
+            ->method('getDestinationContainer')
+            ->willReturn('Picamator\NeoWsClient\Model\Data\Component\CloseApproach');
+
+        $schemaCloseApproachDataMock->expects($this->once())
+            ->method('getFilter');
+
+        $schemaCloseApproachDataMock->expects($this->once())
+            ->method('getSchema');
+
+        // schema collection
+        $schemaCollectionMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface')
+            ->getMock();
+
+        $schemaCollectionMock->expects($this->once())
+            ->method('getData')
+            ->willReturn([$schemaCloseApproachDataMock]);
+
+        $schemaCollectionMock->expects($this->once())
+            ->method('getIterator')
+            ->willReturn(new \ArrayIterator([$schemaCloseApproachDataMock]));
+
+
+        // schema new mock
+        $schemaNeoMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface')
+            ->getMock();
+
+        $schemaNeoMock->expects($this->exactly(2))
+            ->method('getSource')
+            ->willReturn('close_approach_data');
+
+        $schemaNeoMock->expects($this->once())
+            ->method('getDestination')
+            ->willReturn('closeApproachData');
+
+        $schemaNeoMock->expects($this->once())
+            ->method('getDestinationContainer')
+            ->willReturn('Picamator\NeoWsClient\Model\Data\Neo');
+
+        $schemaNeoMock->expects($this->once())
+            ->method('getFilter');
+
+        $schemaNeoMock->expects($this->once())
+            ->method('getSchema')
+            ->willReturn($schemaCollectionMock);
+
+        // collection mock
+        $this->collectionMock->expects($this->once())
+            ->method('getType')
+            ->willReturn('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface');
+
+        $this->collectionMock->expects($this->once())
+            ->method('count')
+            ->willReturn(1);
 
         $this->collectionMock->expects($this->once())
             ->method('getIterator')
             ->willReturn(new \ArrayIterator([$schemaNeoMock]));
 
         // object manager
-        $this->objectManagerMock->expects($this->exactly(2))
+        $this->objectManagerMock->expects($this->exactly(3))
             ->method('create')
             ->withConsecutive(
-                ['Picamator\NeoWsClient\Model\Data\Primitive\Link'],
+                ['Picamator\NeoWsClient\Model\Data\Component\CloseApproach'],
+                ['Picamator\NeoWsClient\Model\Data\Component\Collection'],
                 ['Picamator\NeoWsClient\Model\Data\Neo']
             );
 
