@@ -4,7 +4,7 @@
  */
 
 require_once 'app.php';
-require_once './template/neo.detailed.php';
+require_once __DIR__ . '/template/neo.detailed.php';
 
 use \Picamator\NeoWsClient\Request\Data\NeoRequest;
 
