@@ -2,7 +2,6 @@
 namespace Picamator\NeoWsClient\Tests\Integration\Manager;
 
 use Picamator\NeoWsClient\Manager\Api\ManagerInterface;
-use Picamator\NeoWsClient\Model\Api\Data\NeoInterface;
 use Picamator\NeoWsClient\Request\Data\NeoRequest;
 use Picamator\NeoWsClient\Tests\Integration\BaseTest;
 

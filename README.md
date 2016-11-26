@@ -29,14 +29,16 @@ Update to your `composer.json` with:
 Examples
 --------
 To run examples please create parameters.yml in config directory using as a template [parameters.yml.dist](config/parameters.yml.dist).
-The `DEMO_KEY` api token is a valid one. It has limit number of requests per hour, per day.
-More information is in [NASA official documentation](https://api.nasa.gov/api.html#authentication).
+The `DEMO_KEY` is a valid api token. It has limitation as requests per hour, per day.
+More information in [NASA official documentation](https://api.nasa.gov/api.html#authentication).
 
 Example list:
 
 * [GET /rest/v1/stats](doc/example/statistics.php)
 * [GET /rest/v1/neo/{asteroid_id}](doc/example/neo.php)
 * [GET /rest/v1/neo/browse](doc/example/neo.browse.php)
+* [GET /rest/v1/feed](doc/example/feed.php)
+* [GET /rest/v1/feed/today](doc/example/feed.today.php)
 
 Arbitrary precision math
 ------------------------

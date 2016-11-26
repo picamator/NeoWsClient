@@ -5,8 +5,6 @@ use Picamator\NeoWsClient\Mapper\Api\FilterInterface;
 
 /**
  * Filter, convert data to \DateTime object
- *
- * @codeCoverageIgnore
  */
 class DateTimeFilter implements FilterInterface
 {

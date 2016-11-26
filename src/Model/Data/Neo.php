@@ -37,7 +37,7 @@ class Neo implements NeoInterface
     private $nasaJplUrl;
 
     /**
-     * @var float
+     * @var numeric
      */
     private $absoluteMagnitudeH;
 
@@ -67,11 +67,12 @@ class Neo implements NeoInterface
         $this->setPropertySimple('neoReferenceId', $data, 'string');
         $this->setPropertySimple('name', $data, 'string');
         $this->setPropertySimple('nasaJplUrl', $data, 'string');
-        $this->setPropertySimple('absoluteMagnitudeH', $data, 'float');
+        $this->setPropertySimple('absoluteMagnitudeH', $data, 'numeric');
         $this->setPropertyComplex('estimatedDiameter', $data, 'Picamator\NeoWsClient\Model\Api\Data\Component\EstimatedDiameterInterface');
         $this->setPropertySimple('potentiallyHazardousAsteroid', $data, 'bool');
         $this->setPropertyCollection('closeApproachData', $data, 'Picamator\NeoWsClient\Model\Api\Data\Component\CloseApproachInterface');
-        $this->setPropertyComplex('orbitalData', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\OrbitInterface');
+
+        $this->setPropertyComplexDefault('orbitalData', $data, 'Picamator\NeoWsClient\Model\Api\Data\Primitive\OrbitInterface', null);
     }
 
     /**

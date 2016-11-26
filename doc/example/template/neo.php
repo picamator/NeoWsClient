@@ -10,8 +10,7 @@ function showNeoDetailed(NeoInterface $data)
 {
     echo <<<EOT
 {$data->getName()}
---------------------------------
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Neo reference id                | {$data->getNeoReferenceId()}
 Name                            | {$data->getName()}

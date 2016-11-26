@@ -1,6 +1,6 @@
 <?php
 /**
- * Statistics resource: GET /rest/v1/stats
+ * Resource: GET /rest/v1/stats
  */
 
 require_once 'app.php';

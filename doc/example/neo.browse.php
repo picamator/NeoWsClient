@@ -1,10 +1,10 @@
 <?php
 /**
- * Statistics resource: GET /rest/v1/neo/browse
+ * Resource: GET /rest/v1/neo/browse
  */
 
 require_once 'app.php';
-require_once __DIR__ . '/template/neo.detailed.php';
+require_once __DIR__ . '/template/neo.php';
 
 use \Picamator\NeoWsClient\Request\Data\NeoBrowseRequest;
 

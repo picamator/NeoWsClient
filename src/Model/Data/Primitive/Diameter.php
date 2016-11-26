@@ -14,12 +14,12 @@ class Diameter implements DiameterInterface
     use PropertySettingTrait;
 
     /**
-     * @var float
+     * @var numeric
      */
     private $estimatedDiameterMin;
 
     /**
-     * @var float
+     * @var numeric
      */
     private $estimatedDiameterMax;
 
@@ -28,8 +28,8 @@ class Diameter implements DiameterInterface
      */
     public function __construct(array $data)
     {
-        $this->setPropertySimple('estimatedDiameterMin', $data, 'float');
-        $this->setPropertySimple('estimatedDiameterMax', $data, 'float');
+        $this->setPropertySimple('estimatedDiameterMin', $data, 'numeric');
+        $this->setPropertySimple('estimatedDiameterMax', $data, 'numeric');
     }
 
     /**

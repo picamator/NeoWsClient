@@ -4,7 +4,7 @@ namespace Picamator\NeoWsClient\Tests\Unit\Model\Data;
 use Picamator\NeoWsClient\Mapper\Data\Schema;
 use Picamator\NeoWsClient\Model\Data\Component\Collection;
 use Picamator\NeoWsClient\Model\Data\Neo;
-use Picamator\NeoWsClient\Model\Data\NeoDate;
+use Picamator\NeoWsClient\Model\Data\Component\NeoDate;
 use Picamator\NeoWsClient\Model\Data\Statistics;
 use Picamator\NeoWsClient\Model\Data\Primitive\PaginatedLink;
 use Picamator\NeoWsClient\Tests\Unit\BaseTest;

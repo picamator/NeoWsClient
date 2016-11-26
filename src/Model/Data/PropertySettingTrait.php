@@ -18,6 +18,7 @@ trait PropertySettingTrait
         'array' => 'is_array',
         'bool' => 'is_bool',
         'object' => 'is_object',
+        'numeric' => 'is_numeric',
     ];
 
     /**
@@ -50,7 +51,7 @@ trait PropertySettingTrait
     }
 
     /**
-     * Set simple property default: string, int, float, bool, array, object
+     * Set simple property default: string, int, float, bool, array, object, numeric
      *
      * @param string $property
      * @param array $data

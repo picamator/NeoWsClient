@@ -1,8 +1,9 @@
 <?php
-namespace Picamator\NeoWsClient\Model\Data;
+namespace Picamator\NeoWsClient\Model\Data\Component;
 
 use Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface;
-use Picamator\NeoWsClient\Model\Api\Data\NeoDateInterface;
+use Picamator\NeoWsClient\Model\Api\Data\Component\NeoDateInterface;
+use Picamator\NeoWsClient\Model\Data\PropertySettingTrait;
 
 /**
  * Neo date value object
