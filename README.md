@@ -1,6 +1,19 @@
 NeoWsClient
 ===========
 
+[![PHP 7 ready](http://php7ready.timesplinter.ch/picamator/NeoWsClient/dev/badge.svg)](https://travis-ci.org/picamator/NeoWsClient)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/b3e8fdb6-87cf-4988-80da-1b8b21b450f2/mini.png)](https://insight.sensiolabs.com/projects/b3e8fdb6-87cf-4988-80da-1b8b21b450f2)
+Master
+------
+[![Build Status](https://travis-ci.org/picamator/NeoWsClient.svg?branch=master)](https://travis-ci.org/picamator/NeoWsClient)
+[![Coverage Status](https://coveralls.io/repos/github/picamator/NeoWsClient/badge.svg?branch=master)](https://coveralls.io/github/picamator/NeoWsClient?branch=master)
+
+Dev
+---
+[![Build Status](https://travis-ci.org/picamator/NeoWsClient.svg?branch=dev)](https://travis-ci.org/picamator/NeoWsClient)
+[![Coverage Status](https://coveralls.io/repos/github/picamator/NeoWsClient/badge.svg?branch=dev)](https://coveralls.io/github/picamator/NeoWsClient?branch=dev)
+
+
 NeoWsClient - client for NASA Open Api "[Near Earth Object Web Service](https://api.nasa.gov/neo/?api_key=DEMO_KEY)" or "NeoWs" in short.
 All NeoWs data is from the [NASA JPL Asteroid team](http://neo.jpl.nasa.gov/).
 
