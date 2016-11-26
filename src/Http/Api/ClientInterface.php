@@ -20,4 +20,11 @@ interface ClientInterface
      * @throws HttpClientException
      */
     public function request($resource, array $paramList = []);
+
+    /**
+     * Get last response
+     *
+     * @return ResponseInterface | null
+     */
+    public function getLastResponse();
 }

@@ -13,6 +13,7 @@ use Picamator\NeoWsClient\Exception\HttpClientException;
 use Picamator\NeoWsClient\Http\Api\ClientInterface;
 use Picamator\NeoWsClient\Http\Api\Data\ConfigInterface;
 use GuzzleHttp\ClientInterface as GuzzleHttpClientInterface;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Client, it's deliberately mark final to encourage composition
@@ -28,6 +29,11 @@ final class Client implements ClientInterface
      * @var GuzzleHttpClientInterface
      */
     private $client;
+
+    /**
+     * @var ResponseInterface
+     */
+    private $response;
 
     /**
      * @param ConfigInterface $config
@@ -56,10 +62,9 @@ final class Client implements ClientInterface
         // catch 3-rd party exception
         try {
             /** @var \Psr\Http\Message\ResponseInterface $response */
-            $response = $this->client->request('get', $url);
-
+            $this->response = $this->client->request('get', $url);
         } catch (GuzzleHttpClientException $e) {
-            return $e->getResponse();
+            $this->response = $e->getResponse();
         } catch(BadResponseException $e) {
             throw new HttpClientException('Processing 3-rd party exception', 0, $e);
         } catch(ConnectException $e) {
@@ -76,6 +81,16 @@ final class Client implements ClientInterface
             throw new HttpClientException('Processing 3-rd party exception', 0, $e);
         }
 
-        return $response;
+        return $this->response;
+    }
+
+    /**
+     * @inheritDoc
+     *
+     * @codeCoverageIgnore
+     */
+    public function getLastResponse()
+    {
+        return $this->response;
     }
 }
