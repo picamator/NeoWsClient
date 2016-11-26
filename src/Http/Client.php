@@ -1,6 +1,14 @@
 <?php
 namespace Picamator\NeoWsClient\Http;
 
+use Guzzle\Http\Exception\RequestException;
+use Guzzle\Http\Exception\TooManyRedirectsException;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\SeekException;
+use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\TransferException;
+use GuzzleHttp\Exception\ClientException as GuzzleHttpClientException;
 use Picamator\NeoWsClient\Exception\HttpClientException;
 use Picamator\NeoWsClient\Http\Api\ClientInterface;
 use Picamator\NeoWsClient\Http\Api\Data\ConfigInterface;
@@ -50,7 +58,21 @@ final class Client implements ClientInterface
             /** @var \Psr\Http\Message\ResponseInterface $response */
             $response = $this->client->request('get', $url);
 
-        } catch (\Exception $e) {
+        } catch (GuzzleHttpClientException $e) {
+            return $e->getResponse();
+        } catch(BadResponseException $e) {
+            throw new HttpClientException('Processing 3-rd party exception', 0, $e);
+        } catch(ConnectException $e) {
+            throw new HttpClientException('Processing 3-rd party exception', 0, $e);
+        } catch(RequestException $e) {
+            throw new HttpClientException('Processing 3-rd party exception', 0, $e);
+        } catch(SeekException $e) {
+            throw new HttpClientException('Processing 3-rd party exception', 0, $e);
+        } catch(ServerException $e) {
+            throw new HttpClientException('Processing 3-rd party exception', 0, $e);
+        } catch(TooManyRedirectsException $e) {
+            throw new HttpClientException('Processing 3-rd party exception', 0, $e);
+        } catch(TransferException $e) {
             throw new HttpClientException('Processing 3-rd party exception', 0, $e);
         }
 

@@ -48,7 +48,8 @@ Configuration IDE (PhpStorm)
 ---------------------------- 
 ### Remote interpreter
 1. Use ssh connection to set php interpreter
-2. Set "Path mappings": `host machine project root->/NeoWsClient`
+2. PHP executable `/usr/local/bin/php`
+3. Set "Path mappings": `host machine project root->/NeoWsClient`
 
 More information is [here](https://confluence.jetbrains.com/display/PhpStorm/Working+with+Remote+PHP+Interpreters+in+PhpStorm).
 

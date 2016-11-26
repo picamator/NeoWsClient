@@ -34,16 +34,20 @@ More information in [NASA official documentation](https://api.nasa.gov/api.html#
 
 Example list:
 
-* [GET /rest/v1/stats](doc/example/statistics.php)
-* [GET /rest/v1/neo/{asteroid_id}](doc/example/neo.php)
-* [GET /rest/v1/neo/browse](doc/example/neo.browse.php)
-* [GET /rest/v1/feed](doc/example/feed.php)
-* [GET /rest/v1/feed/today](doc/example/feed.today.php)
+* Statistics: [GET /rest/v1/stats](doc/example/statistics.php)
+* Neo: [GET /rest/v1/neo/{asteroid_id}](doc/example/neo.php)
+* Neo browse: [GET /rest/v1/neo/browse](doc/example/neo.browse.php)
+* Feed: [GET /rest/v1/feed](doc/example/feed.php)
+* Feed detailed: [GET /rest/v1/feed](doc/example/feed.detailed.php)
+* Feed today: [GET /rest/v1/feed/today](doc/example/feed.today.php)
+* Feed today detailed: [GET /rest/v1/feed/today](doc/example/feed.today.detailed.php)
+* Wrong resource 404: [GET /rest/v1/wrong-resource](doc/example/wrong.resource.php)
+* Wrong api token 403: [GET /rest/v1/wrong-resource](doc/example/wrong.api.key.php)
 
 Arbitrary precision math
 ------------------------
 NeoWsClient formats only Date to DateTime object all others keeps original API's.
-NeoWs uses string for long precision float like e.g. `.6304873017364636` execution `floatval` on them removes last two digits.
+NeoWs uses string for long precision float like e.g. `.6304873017364636` execution `floatval` on them would removes last two digits.
 Therefore NeoWsClient does not convert strings to `int` or `float`. To make any math with `string floats` please use [BCMath](http://php.net/manual/en/book.bc.php).
 BCMath takes care of arbitrary precision mathematics. 
 
@@ -70,6 +74,32 @@ The schema contains:
  schema                 | no            | Sub schema
  collectionOf           | no            | Interface name of NeoWsClient objects that will be present inside collection. It's an interface of  `destinationContainer` in `sub-schema`.
  filter                 | no            | Name of NeoWsClient filter object, tha runs over API's data
+
+### Errors
+There are three different error types:
+
+* Response HTTP codes: 401, 403, 404
+* Response HTTP code 200 with empty body
+* Exception
+
+#### Response HTTP codes: 401, 403, 404
+In case of getting HTTP codes: 401, 403, 404 or any unsuccessful one application return empty response.
+Empty response means valid `Response` object where:
+
+* code: is a http code
+* data: `stdClass` over body response string
+* rateLimit: valid rate limit object with data if they are present in API's header
+
+#### Response HTTP code 200 with empty body
+If API returns empty body with HTTP code 200 with several simultaneously requests. The NeoWsClient Manager rise exception `ManagerException` in that case.
+Because HTTP code 200 means OK, but body is wrong therefore NeoWsClient can not distinguish valid/invalid data by HTTP code.
+
+That exception SHOULD be catch without putting any logic like resend, wait 3 sec. then resend again etc.
+Instead it's better to have cache over API.
+
+#### Exception
+The full exception list that NeoWsClient rises is in [Exception](src/Exception) folder.
+If exception rise it means that application can not proceed request, it does not have any business logic in it.
 
 Documentation
 -------------

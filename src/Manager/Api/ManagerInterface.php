@@ -2,7 +2,8 @@
 namespace Picamator\NeoWsClient\Manager\Api;
 
 use Picamator\NeoWsClient\Exception\HttpClientException;
-use Picamator\NeoWsClient\Exception\RuntimeException;
+use Picamator\NeoWsClient\Exception\InvalidArgumentException;
+use Picamator\NeoWsClient\Exception\ManagerException;
 use Picamator\NeoWsClient\Request\Api\Data\RequestAwareInterface;
 use Picamator\NeoWsClient\Response\Api\Data\ResponseInterface;
 
@@ -19,7 +20,10 @@ interface ManagerInterface
      * @return ResponseInterface
      *
      * @throws HttpClientException
-     * @throws RuntimeException
+     *
+     * @throws ManagerException
+     * @throws HttpClientException
+     * @throws InvalidArgumentException
      */
     public function find(RequestAwareInterface $request);
 }

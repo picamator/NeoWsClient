@@ -1,7 +1,7 @@
 <?php
 namespace Picamator\NeoWsClient\Manager;
 
-use Picamator\NeoWsClient\Exception\RuntimeException;
+use Picamator\NeoWsClient\Exception\ManagerException;
 use Picamator\NeoWsClient\Http\Api\ClientInterface;
 use Picamator\NeoWsClient\Manager\Api\Builder\RateLimitFactoryInterface;
 use Picamator\NeoWsClient\Manager\Api\ManagerInterface;
@@ -72,7 +72,7 @@ final class Manager implements ManagerInterface
         $code = $responseMsg->getStatusCode();
         $rateLimit = $this->rateLimitFactory->create($responseMsg);
         if($code !== 200) {
-            return $this->responseFactory->create($rateLimit, $code, new \stdClass());
+            return $this->responseFactory->create($rateLimit, $code, (object) $responseMsg->getBody()->getContents());
         }
 
         $body = $this->getResponseBody($responseMsg);
@@ -88,13 +88,13 @@ final class Manager implements ManagerInterface
      *
      * @return array
      *
-     * @throws RuntimeException
+     * @throws ManagerException
      */
     private function getResponseBody(ResponseInterface $responseMsg)
     {
         $data = json_decode($responseMsg->getBody(), true);
         if (is_null($data)) {
-            throw new RuntimeException(sprintf('Can not convert to json body string: "%s"', $responseMsg->getBody()));
+            throw new ManagerException(sprintf('Can not convert to json body string: "%s"', $responseMsg->getBody()));
         }
 
         return $data;

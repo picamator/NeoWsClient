@@ -156,6 +156,7 @@ class ManagerTest extends BaseTest
         $resource = 'test-resource';
         $paramList = [];
         $code = 404;
+        $msg = 'Error';
 
         // request mock
         $this->requestMock->expects($this->once())
@@ -166,10 +167,22 @@ class ManagerTest extends BaseTest
             ->method('getParamList')
             ->willReturn($paramList);
 
+        // stream mock
+        $streamMock = $this->getMockBuilder('Psr\Http\Message\StreamInterface')
+            ->getMock();
+
+        $streamMock->expects($this->once())
+            ->method('getContents')
+            ->willReturn($msg);
+
         // response message mock
         $this->responseMsgMock->expects($this->once())
             ->method('getStatusCode')
             ->willReturn($code);
+
+        $this->responseMsgMock->expects($this->once())
+            ->method('getBody')
+            ->willReturn($streamMock);
 
         // client mock
         $this->clientMock->expects($this->once())
@@ -186,11 +199,9 @@ class ManagerTest extends BaseTest
         // response factory mock
         $this->responseFactoryMock->expects($this->once())
             ->method('create')
-            ->with($this->equalTo($this->rateLimitMock), $this->equalTo($code), $this->equalTo(new \stdClass()));
+            ->with($this->equalTo($this->rateLimitMock), $this->equalTo($code), $this->equalTo((object) $msg));
 
         // never
-        $this->responseMsgMock->expects($this->never())
-            ->method('getBody');
         $this->repositoryMock->expects($this->never())
             ->method('findSchema');
         $this->mapperMock->expects($this->never())
@@ -200,7 +211,7 @@ class ManagerTest extends BaseTest
     }
 
     /**
-     * @expectedException \Picamator\NeoWsClient\Exception\RuntimeException
+     * @expectedException \Picamator\NeoWsClient\Exception\ManagerException
      */
     public function testFailBodyFind()
     {

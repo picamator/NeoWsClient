@@ -1,7 +1,7 @@
 {
   "name": "picamator/neo-ws-client",
   "description": "Client for NASA Open Api: Near Earth Object Web Service",
-  "keywords": ["NASA", "JPL", "NeoWs", "hazardous", "asteroid", "earth", "client"],
+  "keywords": ["NASA", "JPL", "NeoWs", "hazardous", "asteroid", "earth", "neo", "client"],
   "license": "MIT",
   "authors": [
     {
