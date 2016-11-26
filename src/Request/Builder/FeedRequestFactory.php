@@ -45,7 +45,7 @@ class FeedRequestFactory implements FeedRequestFactoryInterface
     /**
      * @inheritDoc
      */
-    public function create($startDate, $endDate)
+    public function create($startDate, $endDate, array $data = [])
     {
         $startDateTime = $this->getDateTime($startDate);
         $endDateTime = $this->getDateTime($endDate);
@@ -61,10 +61,10 @@ class FeedRequestFactory implements FeedRequestFactoryInterface
             );
         }
 
-        $data = [
+        $data = array_merge($data, [
             'startDate' => $startDate,
-            'endDate' => $endDate
-        ];
+            'endDate' => $endDate,
+        ]);
 
         return $this->objectManager->create($this->className, [$data]);
     }

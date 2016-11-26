@@ -12,11 +12,10 @@ $manager = $container->get('neo_ws_manager_feed_manager');
 // get response
 $startDate = '2016-11-24';
 $endDate = '2016-11-25';
-$detailed = false;
 
 /** @var \Picamator\NeoWsClient\Request\Builder\FeedRequestFactory $requestFactory */
 $requestFactory = $container->get('neo_ws_request_builder_feed_request_factory');
-$request = $requestFactory->create($startDate, $endDate, ['detailed' => $detailed]);
+$request = $requestFactory->create($startDate, $endDate);
 
 $response = $manager->find($request);
 

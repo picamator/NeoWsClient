@@ -12,7 +12,7 @@ use \Picamator\NeoWsClient\Request\Data\FeedTodayRequest;
 $manager = $container->get('neo_ws_manager_feed_manager');
 
 // get response
-$request = new FeedTodayRequest();
+$request = new FeedTodayRequest(['detailed' => false]);
 $response = $manager->find($request);
 
 /** @var  \Picamator\NeoWsClient\Model\Api\Data\FeedInterface $data */

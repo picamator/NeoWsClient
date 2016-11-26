@@ -5,7 +5,7 @@ use Picamator\NeoWsClient\Tests\Integration\BaseTest;
 
 class NeoBrowseTest extends BaseTest
 {
-    public function testStatistics()
+    public function testNeoBrowse()
     {
         $code = 200;
         $limit = 40;

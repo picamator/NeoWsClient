@@ -36,6 +36,11 @@ Feet (min)                      | {$data->getEstimatedDiameter()->getFeet()->get
 Feet (max)                      | {$data->getEstimatedDiameter()->getFeet()->getEstimatedDiameterMax()}
 
 
+EOT;
+
+    if ($data->getOrbitalData()) {
+
+        echo <<<EOT
 Orbital data
 ------------
 
@@ -59,6 +64,10 @@ Mean motion                     | {$data->getOrbitalData()->getMeanMotion()}
 Equinox                         | {$data->getOrbitalData()->getEquinox()} 
 
 
+EOT;
+    }
+
+    echo <<<EOT
 Close approach data
 -------------------
 

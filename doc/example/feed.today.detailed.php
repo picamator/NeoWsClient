@@ -1,32 +1,27 @@
 <?php
 /**
- * Resource: GET /rest/v1/feed
+ * Resource: GET /rest/v1/feed/today
  */
 
 require_once 'app.php';
 require_once __DIR__ . '/template/neo.php';
 
+use \Picamator\NeoWsClient\Request\Data\FeedTodayRequest;
+
 /** @var  \Picamator\NeoWsClient\Manager\Manager $manager */
 $manager = $container->get('neo_ws_manager_feed_manager');
 
 // get response
-$startDate = '2016-11-24';
-$endDate = '2016-11-25';
-$detailed = false;
-
-/** @var \Picamator\NeoWsClient\Request\Builder\FeedRequestFactory $requestFactory */
-$requestFactory = $container->get('neo_ws_request_builder_feed_request_factory');
-$request = $requestFactory->create($startDate, $endDate, ['detailed' => $detailed]);
-
+$request = new FeedTodayRequest();
 $response = $manager->find($request);
 
 /** @var  \Picamator\NeoWsClient\Model\Api\Data\FeedInterface $data */
 $data = $response->getData();
 
 echo <<<EOT
-=================================================
-        NEO Feed {$startDate} - {$endDate}
-=================================================
+=================================
+        NEO Feed Today
+=================================
 
 HTTP Code               | {$response->getCode()}
 Api key limit           | {$response->getRateLimit()->getLimit()}
@@ -47,9 +42,9 @@ EOT;
 /** @var \Picamator\NeoWsClient\Model\Api\Data\Component\NeoDateInterface $item */
 foreach($data->getNeoDateList() as $item) {
     echo <<<EOT
---------------------------------
+-----------------------------------
 {$item->getDate()->format('Y-m-d')}
-================================
+===================================
 
 
 EOT;

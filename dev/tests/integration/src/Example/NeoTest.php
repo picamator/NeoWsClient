@@ -5,7 +5,7 @@ use Picamator\NeoWsClient\Tests\Integration\BaseTest;
 
 class NeoTest extends BaseTest
 {
-    public function testStatistics()
+    public function testNeo()
     {
         $code = 200;
         $limit = 40;

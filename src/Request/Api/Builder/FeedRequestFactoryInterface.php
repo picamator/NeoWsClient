@@ -14,10 +14,11 @@ interface FeedRequestFactoryInterface
      *
      * @param string $startDate
      * @param string $endDate
+     * @param array $data
      *
      * @return FeedRequestInterface
      *
      * @throws InvalidArgumentException
      */
-    public function create($startDate, $endDate);
+    public function create($startDate, $endDate, array $data = []);
 }
