@@ -1,4 +1,6 @@
 <?php
+namespace Picamator\NeoWsClient\Example;
+
 /**
  * Resource: GET /rest/v1/feed
  */

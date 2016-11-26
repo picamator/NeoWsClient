@@ -1,4 +1,6 @@
 <?php
+namespace Picamator\NeoWsClient\Example;
+
 use Picamator\NeoWsClient\Model\Api\Data\NeoInterface;
 
 /**

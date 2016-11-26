@@ -1,4 +1,6 @@
 <?php
+namespace Picamator\NeoWsClient\Example;
+
 /**
  * App file, general init for all examples
  */
