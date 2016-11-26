@@ -8,9 +8,9 @@ use Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface;
 use Picamator\NeoWsClient\Model\Api\ObjectManagerInterface;
 
 /**
- * Map between api response and model's data
+ * Map between api response and model's data, it's deliberately mark final to encourage composition
  */
-class Mapper implements MapperInterface
+final class Mapper implements MapperInterface
 {
     /**
      * @var string

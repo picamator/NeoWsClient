@@ -7,9 +7,9 @@ use Picamator\NeoWsClient\Http\Api\Data\ConfigInterface;
 use GuzzleHttp\ClientInterface as GuzzleHttpClientInterface;
 
 /**
- * Client
+ * Client, it's deliberately mark final to encourage composition
  */
-class Client implements ClientInterface
+final class Client implements ClientInterface
 {
     /**
      * @var ConfigInterface
@@ -21,6 +21,10 @@ class Client implements ClientInterface
      */
     private $client;
 
+    /**
+     * @param ConfigInterface $config
+     * @param GuzzleHttpClientInterface $client
+     */
     public function __construct(
         ConfigInterface $config,
         GuzzleHttpClientInterface $client
