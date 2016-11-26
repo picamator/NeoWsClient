@@ -101,7 +101,6 @@ class ClientTest extends BaseTest
             ->willThrowException($exception);
 
         $this->client->request($resource);
-
     }
 
     /**

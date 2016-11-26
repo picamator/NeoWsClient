@@ -209,7 +209,6 @@ class MapperTest extends BaseTest
         $schemaCloseApproachDataMock->expects($this->never())
             ->method('getCollectionOf');
 
-
         $this->mapper->map($this->collectionMock, $data);
     }
 }

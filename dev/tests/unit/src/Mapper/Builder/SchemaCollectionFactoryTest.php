@@ -107,7 +107,6 @@ class SchemaCollectionFactoryTest extends BaseTest
                 ], ['Picamator\NeoWsClient\Model\Data\Component\Collection']
             )->willReturnOnConsecutiveCalls($filterMock, $schemaFirstMock, $schemaSecondMock, $this->collectionMock, $schemaThirdMock,  $this->collectionMock);
 
-
         $this->schemaCollectionFactory->create($data);
     }
 }

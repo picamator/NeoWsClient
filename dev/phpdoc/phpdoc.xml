@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
-    <title>Cache manager</title>
+    <title>NeoWsClient</title>
     <parser>
         <target>../../doc/phpdoc</target>
     </parser>
@@ -11,6 +11,6 @@
         <directory>../../src</directory>
     </files>
     <transformations>
-        <template name="responsive-twig" />
+        <template name="responsive" />
     </transformations>
 </phpdoc>

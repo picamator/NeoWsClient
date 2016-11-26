@@ -6,5 +6,4 @@ namespace Picamator\NeoWsClient\Request\Api\Data;
  */
 interface StatisticsRequestInterface extends RequestAwareInterface
 {
-
 }

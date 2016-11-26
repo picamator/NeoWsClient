@@ -256,4 +256,47 @@ class PropertySettingTraitTest extends BaseTest
         $this->assertEquals($data['filter'], $schema->getFilter());
         $this->assertNull($schema->getSchema());
     }
+
+    public function testSetPropertyComplexWithoutDefault()
+    {
+        // filter mock
+        $filterMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\FilterInterface')
+            ->getMock();
+
+        // schema mock
+        $schemaMock = $this->getMockBuilder('Picamator\NeoWsClient\Model\Api\Data\Component\CollectionInterface')
+            ->getMock();
+
+        $schemaMock->expects($this->once())
+            ->method('getType')
+            ->willReturn('Picamator\NeoWsClient\Mapper\Api\Data\SchemaInterface');
+
+        $data = [
+            'source' => 'name',
+            'destination' => 'name',
+            'destinationContainer' => 'SomeName',
+            'filter' => $filterMock,
+            'schema' => $schemaMock,
+        ];
+
+        $schema = new Schema($data);
+
+        $this->assertEquals($data['source'], $schema->getSource());
+        $this->assertEquals($data['destination'], $schema->getDestination());
+        $this->assertEquals($data['destinationContainer'], $schema->getDestinationContainer());
+        $this->assertEquals($data['filter'], $schema->getFilter());
+        $this->assertEquals($data['schema'], $schema->getSchema());
+    }
+
+    /**
+     * @expectedException \Picamator\NeoWsClient\Exception\InvalidArgumentException
+     */
+    public function testPropertyDoesNotExist()
+    {
+        $data = [
+            'source' => 'name',
+        ];
+
+        new Schema($data);
+    }
 }

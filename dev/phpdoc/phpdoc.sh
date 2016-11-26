@@ -1,2 +1,2 @@
  #!/bin/bash
-php ../../vendor/bin/phpdoc -c dev/phpdoc/phpdoc.xml
+php ../../vendor/bin/phpdoc.php -c dev/phpdoc/phpdoc.xml

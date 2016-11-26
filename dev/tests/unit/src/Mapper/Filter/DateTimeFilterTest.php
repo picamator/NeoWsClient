@@ -35,4 +35,3 @@ class DateTimeFilterTest extends BaseTest
         $this->assertEquals($date, $actual->format('Y-m-d'));
     }
 }
-
