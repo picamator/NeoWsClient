@@ -1,0 +1,88 @@
+imports:
+  - { resource: parameters.yml }
+
+services:
+  # Model
+  # =====
+  neo_ws_model_object_manager:
+    class: 'Picamator\NeoWsClient\Model\ObjectManager'
+
+  # Http
+  # ====
+  neo_ws_http_config:
+    class: 'Picamator\NeoWsClient\Http\Data\Config'
+    arguments: ['%neo_ws_client.http%']
+
+  neo_ws_http_client:
+    class: 'Picamator\NeoWsClient\Http\Client'
+    factory: ['Picamator\NeoWsClient\App\Di\Http\ClientFactory', 'create']
+    arguments: ['@neo_ws_model_object_manager', '@neo_ws_http_config']
+    lazy:  true
+
+  # Request
+  # ========
+  neo_ws_request_builder_feed_request_factory:
+    class: 'Picamator\NeoWsClient\Request\Builder\FeedRequestFactory'
+    arguments: ['@neo_ws_model_object_manager']
+
+  # Response
+  # ========
+  neo_ws_response_builder_response_factory:
+    class: 'Picamator\NeoWsClient\Response\Builder\ResponseFactory'
+    arguments: ['@neo_ws_model_object_manager']
+    lazy:  true
+
+  # Mapper
+  # ======
+  neo_ws_mapper_mapper:
+    class: 'Picamator\NeoWsClient\Mapper\Mapper'
+    arguments: ['@neo_ws_model_object_manager']
+    lazy:  true
+
+  neo_ws_mapper_builder_schema_collection_factory:
+    class: 'Picamator\NeoWsClient\Mapper\Builder\SchemaCollectionFactory'
+    arguments: ['@neo_ws_model_object_manager']
+    lazy:  true
+
+  neo_ws_mapper_repository_statistics_repository:
+    class: 'Picamator\NeoWsClient\Mapper\Repository\StatisticsRepository'
+    arguments: ['@neo_ws_mapper_builder_schema_collection_factory']
+    lazy:  true
+
+  neo_ws_mapper_repository_neo_repository:
+    class: 'Picamator\NeoWsClient\Mapper\Repository\NeoRepository'
+    arguments: ['@neo_ws_mapper_builder_schema_collection_factory']
+    lazy:  true
+
+  neo_ws_mapper_repository_neo_browse_repository:
+    class: 'Picamator\NeoWsClient\Mapper\Repository\NeoBrowseRepository'
+    arguments: ['@neo_ws_mapper_builder_schema_collection_factory', '@neo_ws_mapper_repository_neo_repository']
+    lazy:  true
+
+  neo_ws_mapper_repository_feed_repository:
+    class: 'Picamator\NeoWsClient\Mapper\Repository\FeedRepository'
+    arguments: ['@neo_ws_mapper_builder_schema_collection_factory', '@neo_ws_mapper_repository_neo_repository']
+    lazy:  true
+
+  # Manager
+  # =======
+  neo_ws_manager_builder_rate_limit_factory:
+    class: 'Picamator\NeoWsClient\Manager\Builder\RateLimitFactory'
+    arguments: ['@neo_ws_model_object_manager']
+    lazy:  true
+
+  neo_ws_manager_statistics_manager:
+    class: 'Picamator\NeoWsClient\Manager\Manager'
+    arguments: ['@neo_ws_http_client', '@neo_ws_manager_builder_rate_limit_factory', '@neo_ws_response_builder_response_factory', '@neo_ws_mapper_mapper', '@neo_ws_mapper_repository_statistics_repository']
+
+  neo_ws_manager_neo_manager:
+    class: 'Picamator\NeoWsClient\Manager\Manager'
+    arguments: ['@neo_ws_http_client', '@neo_ws_manager_builder_rate_limit_factory', '@neo_ws_response_builder_response_factory', '@neo_ws_mapper_mapper', '@neo_ws_mapper_repository_neo_repository']
+
+  neo_ws_manager_neo_browse_manager:
+    class: 'Picamator\NeoWsClient\Manager\Manager'
+    arguments: ['@neo_ws_http_client', '@neo_ws_manager_builder_rate_limit_factory', '@neo_ws_response_builder_response_factory', '@neo_ws_mapper_mapper', '@neo_ws_mapper_repository_neo_browse_repository']
+
+  neo_ws_manager_feed_manager:
+    class: 'Picamator\NeoWsClient\Manager\Manager'
+    arguments: ['@neo_ws_http_client', '@neo_ws_manager_builder_rate_limit_factory', '@neo_ws_response_builder_response_factory', '@neo_ws_mapper_mapper', '@neo_ws_mapper_repository_feed_repository']

@@ -1,0 +1,6 @@
+{
+  "code": 404,
+  "http_error": "NOT_FOUND",
+  "error_message": "No message available",
+  "request": "http://www.neowsapp.com/rest/v1/wrong-resource"
+}

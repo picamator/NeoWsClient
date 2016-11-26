@@ -1,0 +1,8 @@
+vendor/
+.idea/
+nbproject/
+.settings/
+.buildpath
+.project
+*.*~
+*.log
