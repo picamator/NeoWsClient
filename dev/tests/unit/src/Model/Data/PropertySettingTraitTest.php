@@ -238,14 +238,10 @@ class PropertySettingTraitTest extends BaseTest
 
     public function testSetPropertyComplexDefault()
     {
-        $filterMock = $this->getMockBuilder('Picamator\NeoWsClient\Mapper\Api\FilterInterface')
-            ->getMock();
-
         $data = [
             'source' => 'name',
             'destination' => 'name',
             'destinationContainer' => 'SomeName',
-            'filter' => $filterMock
         ];
 
         $schema = new Schema($data);
@@ -253,7 +249,7 @@ class PropertySettingTraitTest extends BaseTest
         $this->assertEquals($data['source'], $schema->getSource());
         $this->assertEquals($data['destination'], $schema->getDestination());
         $this->assertEquals($data['destinationContainer'], $schema->getDestinationContainer());
-        $this->assertEquals($data['filter'], $schema->getFilter());
+        $this->assertNull($schema->getFilter());
         $this->assertNull($schema->getSchema());
     }
 

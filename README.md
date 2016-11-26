@@ -14,7 +14,7 @@ Dev
 [![Coverage Status](https://coveralls.io/repos/github/picamator/NeoWsClient/badge.svg?branch=dev)](https://coveralls.io/github/picamator/NeoWsClient?branch=dev)
 
 
-NeoWsClient - client for NASA Open Api "[Near Earth Object Web Service](https://api.nasa.gov/neo/?api_key=DEMO_KEY)" or "NeoWs" in short.
+NeoWsClient - client for NASA Open Api "[Near Earth Object Web Service](https://api.nasa.gov/neo/?api_key=DEMO_KEY)" or NeoWs in short.
 All NeoWs data is from the [NASA JPL Asteroid team](http://neo.jpl.nasa.gov/).
 
 NeoWsClient supports NeoWs v1 with resources:
@@ -41,7 +41,7 @@ Update to your `composer.json` with:
 
 Examples
 --------
-To run examples please create parameters.yml in config directory using as a template [parameters.yml.dist](config/parameters.yml.dist).
+To run examples please create `parameters.yml` in `config` directory using as a template [parameters.yml.dist](config/parameters.yml.dist).
 The `DEMO_KEY` is a valid api token. It has limitation as requests per hour, per day.
 More information in [NASA official documentation](https://api.nasa.gov/api.html#authentication).
 
@@ -86,7 +86,7 @@ The schema contains:
  destinationContainer   | yes           | Name of NeoWsClient object where `destination` property is located
  schema                 | no            | Sub schema
  collectionOf           | no            | Interface name of NeoWsClient objects that will be present inside collection. It's an interface of  `destinationContainer` in `sub-schema`.
- filter                 | no            | Name of NeoWsClient filter object, tha runs over API's data
+ filter                 | no            | Name of NeoWsClient filter object, it runs over API's data
 
 ### Errors
 There are three different error types:
@@ -123,8 +123,8 @@ Developing
 ----------
 To configure developing environment please:
 
-1. Follow [install and run Docker container](dev/docker/README.md)
-2. Run inside project root in the Docker container `composer install` 
+1. Follow [Docker installation steps](dev/docker/README.md)
+2. Run inside Docker container `composer install`
 
 Contribution
 ------------
