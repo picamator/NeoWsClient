@@ -6,3 +6,4 @@ nbproject/
 .project
 *.*~
 *.log
+*.phar
