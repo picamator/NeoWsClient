@@ -17,7 +17,6 @@ services:
     class: 'Picamator\NeoWsClient\Http\Client'
     factory: ['Picamator\NeoWsClient\App\Di\Http\ClientFactory', 'create']
     arguments: ['@neo_ws_model_object_manager', '@neo_ws_http_config']
-    lazy:  true
 
   # Request
   # ========
@@ -37,7 +36,6 @@ services:
   neo_ws_mapper_mapper:
     class: 'Picamator\NeoWsClient\Mapper\Mapper'
     arguments: ['@neo_ws_model_object_manager']
-    lazy:  true
 
   neo_ws_mapper_builder_schema_collection_factory:
     class: 'Picamator\NeoWsClient\Mapper\Builder\SchemaCollectionFactory'
