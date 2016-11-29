@@ -58,6 +58,7 @@ Example list:
 * Feed today detailed: [GET /rest/v1/feed/today](doc/example/feed.today.detailed.php)
 * Wrong resource 404: [GET /rest/v1/wrong-resource](doc/example/wrong.resource.php)
 * Wrong api token 403: [GET /rest/v1/wrong-resource](doc/example/wrong.api.key.php)
+* Symfony 2.8 integration: [NeoWsExample](https://github.com/picamator/NeoWsExample)
 
 Arbitrary precision math
 ------------------------
